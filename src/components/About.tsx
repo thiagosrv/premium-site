@@ -75,11 +75,11 @@ export default function About() {
           className="relative aspect-[4/5] overflow-hidden"
           style={{ clipPath: "inset(0 0 0% 0)" }}
         >
-          <div
-            className="img-inner w-full h-full"
-            style={{
-              background: "linear-gradient(145deg, #07102A 0%, #050E40 50%, #07102A 100%)",
-            }}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/foto.webp"
+            alt="Equipe PS Proteção — segurança privada Americana SP"
+            className="img-inner w-full h-full object-cover"
           />
 
           <div className="absolute bottom-0 left-0 w-20 h-1" style={{ background: "#FEBE00" }} />

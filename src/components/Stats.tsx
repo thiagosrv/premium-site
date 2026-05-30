@@ -8,32 +8,28 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
-    value: 27,
-    suffix: " anos",
+    display: "27 anos",
     label: "No Mercado",
     description: "Desde 1997 entregando segurança e confiança para condomínios e empresas.",
     icon: Clock,
     highlight: true,
   },
   {
-    value: 3000,
-    suffix: "+",
+    display: "3.000+",
     label: "Colaboradores Treinados",
     description: "Equipes certificadas, com treinamento contínuo e supervisão ativa.",
     icon: Users,
     highlight: false,
   },
   {
-    value: 1000,
-    suffix: "+",
+    display: "1.000+",
     label: "Clientes Atendidos",
     description: "Condomínios, indústrias e empresas que confiam na PS Proteção.",
     icon: Building2,
     highlight: false,
   },
   {
-    value: 100,
-    suffix: "+",
+    display: "100+",
     label: "Cidades Atendidas",
     description: "Cobertura na Região Metropolitana de Campinas e interior paulista.",
     icon: MapPin,
@@ -43,11 +39,9 @@ const stats = [
 
 export default function Stats() {
   const sectionRef = useRef<HTMLElement>(null);
-  const counterRefs = useRef<(HTMLSpanElement | null)[]>([]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Section header
       const st = { immediateRender: false };
 
       gsap.from(".stats-eyebrow", {
@@ -59,39 +53,25 @@ export default function Stats() {
         scrollTrigger: { trigger: sectionRef.current, start: "top 85%", once: true },
       });
 
-      const cards = document.querySelectorAll(".stat-card");
-      cards.forEach((card, i) => {
-        const xDir = i % 2 === 0 ? -40 : 40;
-        gsap.from(card, {
-          x: xDir, y: 50, opacity: 0, scale: 0.95,
-          duration: 0.9, ease: "power3.out",
-          delay: i * 0.1, immediateRender: false,
-          scrollTrigger: { trigger: sectionRef.current, start: "top 82%", once: true },
-        });
+      // Cards: fade + slide up com stagger
+      gsap.from(".stat-card", {
+        y: 48, opacity: 0, duration: 0.75,
+        stagger: 0.12, ease: "power3.out", immediateRender: false,
+        scrollTrigger: { trigger: sectionRef.current, start: "top 82%", once: true },
       });
 
-      gsap.from(".stat-icon-wrap", {
-        scale: 0, opacity: 0, duration: 0.6, stagger: 0.1,
-        ease: "back.out(2)", immediateRender: false,
+      // Número: fade in após o card
+      gsap.from(".stat-number", {
+        opacity: 0, y: 12, duration: 0.6,
+        stagger: 0.12, ease: "power2.out", immediateRender: false,
         scrollTrigger: { trigger: sectionRef.current, start: "top 78%", once: true },
       });
 
+      // Linha accent
       gsap.from(".stat-accent-line", {
         scaleX: 0, transformOrigin: "left center",
-        duration: 1.2, stagger: 0.1, ease: "expo.out", immediateRender: false,
-        scrollTrigger: { trigger: sectionRef.current, start: "top 75%", once: true },
-      });
-
-      // Counters
-      counterRefs.current.forEach((el, i) => {
-        if (!el) return;
-        const obj = { val: 0 };
-        gsap.to(obj, {
-          val: stats[i].value,
-          duration: 2.5, ease: "power2.out",
-          onUpdate: () => { el.textContent = Math.round(obj.val).toString(); },
-          scrollTrigger: { trigger: sectionRef.current, start: "top 78%", once: true },
-        });
+        duration: 0.9, stagger: 0.12, ease: "expo.out", immediateRender: false,
+        scrollTrigger: { trigger: sectionRef.current, start: "top 76%", once: true },
       });
     }, sectionRef);
 
@@ -133,7 +113,7 @@ export default function Stats() {
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {stats.map(({ value: _v, suffix, label, description, icon: Icon, highlight }, i) => (
+          {stats.map(({ display, label, description, icon: Icon, highlight }) => (
             <div
               key={label}
               className="stat-card group relative flex flex-col p-7 overflow-hidden transition-all duration-500 hover:-translate-y-2"
@@ -157,7 +137,7 @@ export default function Stats() {
 
               {/* Icon */}
               <div
-                className="stat-icon-wrap w-12 h-12 flex items-center justify-center mb-6 relative z-10"
+                className="w-12 h-12 flex items-center justify-center mb-6 relative z-10"
                 style={{
                   background: highlight ? "rgba(254,190,0,0.15)" : "rgba(254,190,0,0.07)",
                   border: "1px solid rgba(254,190,0,0.2)",
@@ -166,9 +146,9 @@ export default function Stats() {
                 <Icon size={20} color="#FEBE00" />
               </div>
 
-              {/* Number */}
+              {/* Number — already filled, just fades in */}
               <div
-                className="relative z-10 mb-1 leading-none"
+                className="stat-number relative z-10 mb-1 leading-none"
                 style={{
                   fontFamily: "var(--font-cormorant)",
                   fontSize: "clamp(2.8rem, 4.5vw, 4rem)",
@@ -177,8 +157,7 @@ export default function Stats() {
                   textShadow: highlight ? "0 0 40px rgba(254,190,0,0.4)" : "none",
                 }}
               >
-                <span ref={(el) => { counterRefs.current[i] = el; }}>0</span>
-                <span>{suffix}</span>
+                {display}
               </div>
 
               {/* Accent line */}
@@ -189,7 +168,7 @@ export default function Stats() {
 
               {/* Label */}
               <p
-                className="relative z-10 text-white font-semibold mb-2"
+                className="relative z-10 text-white mb-2"
                 style={{
                   fontFamily: "var(--font-cormorant)",
                   fontSize: "1.05rem",
