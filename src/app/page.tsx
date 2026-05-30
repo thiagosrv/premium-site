@@ -1,65 +1,82 @@
-import Image from "next/image";
+import type { Metadata } from "next";
+import Navbar from "@/components/Navbar";
+import Hero from "@/components/Hero";
+import About from "@/components/About";
+import Services from "@/components/Services";
+import Stats from "@/components/Stats";
+import Reviews from "@/components/Reviews";
+import Contact from "@/components/Contact";
+import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+
+export const metadata: Metadata = {
+  title: "PS Proteção — Segurança Privada de Alto Padrão | Americana-SP",
+  description:
+    "Empresa de segurança privada com 27 anos de experiência. Portaria, vigilância, controle de acesso, rondas e facilities para condomínios e empresas na Região Metropolitana de Campinas.",
+  keywords: "segurança privada americana sp, portaria condomínio campinas, controle de acesso, vigilância patrimonial, facilities terceirização",
+  openGraph: {
+    title: "PS Proteção — Segurança Privada de Alto Padrão",
+    description: "27 anos protegendo empresas e condomínios na Região Metropolitana de Campinas.",
+    url: "https://psprotecao.com.br",
+    siteName: "PS Proteção",
+    locale: "pt_BR",
+    type: "website",
+  },
+  alternates: { canonical: "https://psprotecao.com.br" },
+};
 
 export default function Home() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SecurityService",
+    "name": "PS Proteção",
+    "alternateName": "PS Proteção e Vigilância",
+    "url": "https://psprotecao.com.br",
+    "telephone": ["+551934787799", "+5519978210246"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua São Gabriel, 1623 Vila Belvedere",
+      "addressLocality": "Americana",
+      "addressRegion": "SP",
+      "postalCode": "13478-000",
+      "addressCountry": "BR"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "-22.7409",
+      "longitude": "-47.3328"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "priceRange": "$$",
+    "description": "Empresa de segurança privada com 27 anos de experiência. Portaria, vigilância, controle de acesso, rondas e limpeza para condomínios e empresas na Região Metropolitana de Campinas.",
+    "foundingDate": "1997",
+    "areaServed": "Região Metropolitana de Campinas, SP",
+    "hasMap": "https://maps.app.goo.gl/QtABs1ubKBPghTsL8",
+    "sameAs": [
+      "https://share.google/NNasndqbeh98CIbif"
+    ]
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <main>
+        <Navbar />
+        <Hero />
+        <About />
+        <Services />
+        <Stats />
+        <Reviews />
+        <Contact />
       </main>
-    </div>
+      <FloatingWhatsApp />
+    </>
   );
 }
