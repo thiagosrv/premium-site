@@ -18,12 +18,33 @@ export default function CTAPrimary({
 }: Props) {
   const [on, setOn] = useState(false);
 
-  const inner = on ? (
-    <span className="inline-flex items-center gap-2">
-      <span className="cta-dot" />
-      <span>Estamos Online</span>
+  /*
+   * O children fica sempre renderizado (invisível no hover) para
+   * manter o tamanho original do botão. O texto de hover é sobreposto
+   * com position:absolute e não afeta as dimensões do elemento.
+   */
+  const inner = (
+    <span className="relative inline-flex items-center justify-center w-full">
+      {/* Conteúdo original — mantém o tamanho; escondido no hover */}
+      <span
+        className="inline-flex items-center gap-2 transition-opacity duration-150"
+        style={{ opacity: on ? 0 : 1 }}
+        aria-hidden={on}
+      >
+        {children}
+      </span>
+
+      {/* Overlay hover — absolutamente posicionado, não afeta layout */}
+      <span
+        className="absolute inset-0 inline-flex items-center justify-center gap-2 transition-opacity duration-150"
+        style={{ opacity: on ? 1 : 0 }}
+        aria-hidden={!on}
+      >
+        <span className="cta-dot" />
+        <span>Estamos Online</span>
+      </span>
     </span>
-  ) : <>{children}</>;
+  );
 
   const shared = {
     onMouseEnter: () => setOn(true),
