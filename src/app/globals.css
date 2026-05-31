@@ -75,17 +75,24 @@ input, textarea, button,
   50%       { opacity: 0.55; transform: scale(0.65); box-shadow: 0 0 0 4px rgba(255,255,255,0);   }
 }
 
-/* ── Grid quadriculado animado ───────────────────────────────────────── */
-.grid-tex {
-  position: fixed;
+/* ── Grid quadriculado — aplicado POR SEÇÃO, não global ─────────────── */
+/*
+   Ritmo por seção:
+   About    → DEGRADÊ  (gradiente rico + glows, sem grid)
+   Services → TEXTURA  (.section-grid aplicado)
+   Stats    → LIMPA    (gradiente mínimo, sem grid, números protagonistas)
+   Reviews  → DEGRADÊ  (gradiente + glows)
+   Contact  → TEXTURA  (.section-grid aplicado)
+*/
+.section-grid {
+  position: absolute;
   inset: 0;
-  z-index: 9997;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.052) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.052) 1px, transparent 1px);
   background-size: 42px 42px;
-  animation: grid-drift 32s linear infinite;
+  animation: grid-drift 34s linear infinite;
 }
 
 @keyframes grid-drift {

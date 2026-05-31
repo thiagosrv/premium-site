@@ -104,6 +104,8 @@ export default function Services() {
       className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
       style={{ background: "linear-gradient(135deg, #010412 0%, #040926 45%, #0A1540 100%)" }}
     >
+      {/* ── SEÇÃO TEXTURA ── grid quadriculado animado */}
+      <div className="section-grid" aria-hidden="true" />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(254,190,0,0.06) 0%, transparent 55%)" }} />
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 85% 15%, rgba(20,40,120,0.35) 0%, transparent 45%)" }} />
 

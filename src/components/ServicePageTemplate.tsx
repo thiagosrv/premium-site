@@ -192,6 +192,8 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
 
           {/* ══ 3. BENEFÍCIOS — fundo navy escuro ══════════════════════ */}
           <section className="py-24 px-8 md:px-20 lg:px-32 relative overflow-hidden" style={{ background: NAVY_BG }}>
+            {/* ── SEÇÃO TEXTURA ── grid na seção de benefícios */}
+            <div className="section-grid" aria-hidden="true" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 0%, rgba(254,190,0,0.07) 0%, transparent 55%)" }} />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 5% 90%, rgba(15,35,110,0.35) 0%, transparent 45%)" }} />
             <div className="max-w-7xl mx-auto relative z-10">

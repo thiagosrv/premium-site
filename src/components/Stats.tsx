@@ -87,9 +87,8 @@ export default function Stats() {
       style={{ background: "linear-gradient(158deg, #000B38 0%, #040D32 50%, #000214 100%)" }}
     >
       {/* Background glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(254,190,0,0.07) 0%, transparent 60%)" }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 10% 80%, rgba(15,35,110,0.4) 0%, transparent 45%)" }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 90% 90%, rgba(5,20,80,0.35) 0%, transparent 40%)" }} />
+      {/* ── SEÇÃO LIMPA ── apenas o glow gold sutil no topo */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 0%, rgba(254,190,0,0.05) 0%, transparent 60%)" }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Section header */}

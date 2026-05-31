@@ -41,8 +41,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pt-BR" className={`${montserrat.variable} ${inter.variable}`}>
       <body suppressHydrationWarning>
-        {/* Grid quadriculado animado — aparece sobre seções escuras */}
-        <div className="grid-tex" aria-hidden="true" />
         <LenisProvider>{children}</LenisProvider>
       </body>
     </html>

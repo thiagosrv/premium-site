@@ -81,6 +81,8 @@ export default function Contact() {
       className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
       style={{ background: "linear-gradient(145deg, #07102A 0%, #030A20 55%, #000412 100%)" }}
     >
+      {/* ── SEÇÃO TEXTURA ── grid quadriculado animado */}
+      <div className="section-grid" aria-hidden="true" />
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" style={{
         width: "700px", height: "350px",
