@@ -85,10 +85,12 @@ export default function Reviews() {
     <section
       id="avaliacoes"
       ref={sectionRef}
-      className="py-32 px-8 md:px-20 lg:px-32"
-      style={{ background: "#040926" }}
+      className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
+      style={{ background: "linear-gradient(125deg, #020618 0%, #040926 40%, #000B38 100%)" }}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 0%, rgba(254,190,0,0.05) 0%, transparent 50%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 5% 100%, rgba(20,40,130,0.35) 0%, transparent 45%)" }} />
+      <div className="max-w-7xl mx-auto relative z-10">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div>
             <span

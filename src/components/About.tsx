@@ -65,10 +65,14 @@ export default function About() {
     <section
       id="sobre"
       ref={sectionRef}
-      className="py-32 px-8 md:px-20 lg:px-32"
-      style={{ background: "#000B38" }}
+      className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
+      style={{ background: "linear-gradient(148deg, #000214 0%, #000B38 50%, #041535 100%)" }}
     >
-      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      {/* Glows */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 90% 10%, rgba(15,30,100,0.45) 0%, transparent 50%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 5% 90%, rgba(254,190,0,0.04) 0%, transparent 50%)" }} />
+
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24 items-center relative z-10">
         {/* Image side */}
         <div
           ref={imgRef}

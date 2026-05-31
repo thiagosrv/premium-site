@@ -30,12 +30,11 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs }: P
     <div
       ref={ref}
       className="relative pt-36 pb-20 px-8 md:px-20 lg:px-32 overflow-hidden"
-      style={{ background: "#000B38" }}
+      style={{ background: "linear-gradient(145deg, #000214 0%, #000B38 55%, #040E30 100%)" }}
     >
-      {/* Glow */}
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse at 50% 100%, rgba(254,190,0,0.05) 0%, transparent 60%)",
-      }} />
+      {/* Glows */}
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 100%, rgba(254,190,0,0.06) 0%, transparent 55%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 90% 20%, rgba(15,35,110,0.4) 0%, transparent 45%)" }} />
       {/* Bottom border */}
       <div className="absolute bottom-0 left-0 right-0 h-px" style={{
         background: "linear-gradient(90deg, transparent, rgba(254,190,0,0.2), transparent)",

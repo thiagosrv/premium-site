@@ -79,7 +79,7 @@ export default function Contact() {
       id="contato"
       ref={sectionRef}
       className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
-      style={{ background: "#07102A" }}
+      style={{ background: "linear-gradient(145deg, #07102A 0%, #030A20 55%, #000412 100%)" }}
     >
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 pointer-events-none" style={{

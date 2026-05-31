@@ -102,11 +102,10 @@ export default function Services() {
       id="servicos"
       ref={sectionRef}
       className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
-      style={{ background: "#040926" }}
+      style={{ background: "linear-gradient(135deg, #010412 0%, #040926 45%, #0A1540 100%)" }}
     >
-      <div className="absolute inset-0 pointer-events-none" style={{
-        background: "radial-gradient(ellipse at 20% 50%, rgba(254,190,0,0.03) 0%, transparent 60%)",
-      }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(254,190,0,0.06) 0%, transparent 55%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 85% 15%, rgba(20,40,120,0.35) 0%, transparent 45%)" }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">

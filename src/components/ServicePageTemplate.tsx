@@ -32,9 +32,12 @@ function Icon({ name, size = 20, color = "#FEBE00" }: { name: string; size?: num
 }
 
 /* ── Palette ────────────────────────────────────────────────────────────── */
-const YELLOW = "#FEBE00";
-const NAVY   = "#000B38";
-const WHITE  = "#F9F8F5";
+const YELLOW    = "#FEBE00";
+const NAVY      = "#000B38";           // used for cards (solid)
+const NAVY_BG   = "linear-gradient(148deg, #000214 0%, #000B38 50%, #030E40 100%)"; // section background
+const NAVY_BG2  = "linear-gradient(135deg, #010412 0%, #040926 45%, #0A1540 100%)"; // cta-band
+const NAVY_BG3  = "linear-gradient(155deg, #07102A 0%, #030A20 55%, #000412 100%)"; // related section
+const WHITE     = "#F9F8F5";
 
 /* ── Template ───────────────────────────────────────────────────────────── */
 export default function ServicePageTemplate({ service }: { service: ServiceData }) {
@@ -188,8 +191,9 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 3. BENEFÍCIOS — fundo navy escuro ══════════════════════ */}
-          <section className="py-24 px-8 md:px-20 lg:px-32 relative overflow-hidden" style={{ background: NAVY }}>
-            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 0%, rgba(254,190,0,0.06) 0%, transparent 60%)" }} />
+          <section className="py-24 px-8 md:px-20 lg:px-32 relative overflow-hidden" style={{ background: NAVY_BG }}>
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 0%, rgba(254,190,0,0.07) 0%, transparent 55%)" }} />
+            <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 5% 90%, rgba(15,35,110,0.35) 0%, transparent 45%)" }} />
             <div className="max-w-7xl mx-auto relative z-10">
               <div className="mb-14 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
                 <div>
@@ -291,7 +295,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 5. CTA — fundo navy ════════════════════════════════════ */}
-          <section className="cta-band py-20 px-8 md:px-20 lg:px-32" style={{ background: "#040926" }}>
+          <section className="cta-band py-20 px-8 md:px-20 lg:px-32" style={{ background: NAVY_BG2 }}>
             <div className="cta-inner max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
               <div className="max-w-xl">
                 <span className="block mb-3 uppercase tracking-[0.28em] text-xs" style={{ fontFamily: "var(--font-inter)", color: YELLOW }}>Pronto para começar?</span>
@@ -410,7 +414,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
 
           {/* ══ 7. SERVIÇOS RELACIONADOS — navy ════════════════════════ */}
           {related.length > 0 && (
-            <section className="rel-section py-20 px-8 md:px-20 lg:px-32" style={{ background: "#07102A" }}>
+            <section className="rel-section py-20 px-8 md:px-20 lg:px-32" style={{ background: NAVY_BG3 }}>
               <div className="max-w-7xl mx-auto">
                 <div className="flex items-end justify-between mb-10 gap-6">
                   <div>

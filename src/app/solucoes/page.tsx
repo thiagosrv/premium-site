@@ -57,7 +57,7 @@ export default function Solucoes() {
         />
 
         {/* ── Services grid ───────────────────────────────────────── */}
-        <section id="servicos" className="py-24 px-8 md:px-20 lg:px-32" style={{ background: "#040926" }}>
+        <section id="servicos" className="py-24 px-8 md:px-20 lg:px-32" style={{ background: "linear-gradient(135deg, #010412 0%, #040926 45%, #0A1540 100%)" }}>
           <div className="max-w-7xl mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
               {SERVICES.map(({ slug, icon, eyebrow, subtitle }) => {
@@ -101,7 +101,7 @@ export default function Solucoes() {
         </section>
 
         {/* ── Why PS strip ────────────────────────────────────────── */}
-        <section className="py-20 px-8 md:px-20 lg:px-32" style={{ background: "#000B38", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+        <section className="py-20 px-8 md:px-20 lg:px-32" style={{ background: "linear-gradient(158deg, #000B38 0%, #040D32 50%, #000214 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
           <div className="max-w-7xl mx-auto grid md:grid-cols-3 gap-10">
             {[
               { label: "Diagnóstico gratuito",  desc: "Avaliamos seu perfil de risco sem custo e entregamos um plano sob medida." },
@@ -120,7 +120,7 @@ export default function Solucoes() {
         </section>
 
         {/* ── CTA ─────────────────────────────────────────────────── */}
-        <section className="py-24 px-8 md:px-20 lg:px-32 text-center relative overflow-hidden" style={{ background: "#07102A" }}>
+        <section className="py-24 px-8 md:px-20 lg:px-32 text-center relative overflow-hidden" style={{ background: "linear-gradient(145deg, #07102A 0%, #030A20 55%, #000412 100%)" }}>
           <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 50% 50%, rgba(254,190,0,0.05) 0%, transparent 70%)" }} />
           <div className="max-w-xl mx-auto relative z-10">
             <h2 className="text-white mb-6 leading-tight" style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 700 }}>
