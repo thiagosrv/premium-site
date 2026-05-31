@@ -7,6 +7,7 @@ import Stats from "@/components/Stats";
 import Reviews from "@/components/Reviews";
 import Contact from "@/components/Contact";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import MarqueeTicker from "@/components/MarqueeTicker";
 
 export const metadata: Metadata = {
   title: "PS Proteção — Segurança Privada de Alto Padrão | Americana-SP",
@@ -70,6 +71,7 @@ export default function Home() {
       <main>
         <Navbar />
         <Hero />
+        <MarqueeTicker />
         <About />
         <Services />
         <Stats />

@@ -13,8 +13,13 @@ export default function LenisProvider({ children }: { children: React.ReactNode 
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     });
 
-    // Sync Lenis scroll with ScrollTrigger
-    lenis.on("scroll", () => ScrollTrigger.update());
+    // Sync Lenis scroll with ScrollTrigger + broadcast velocity for ticker
+    lenis.on("scroll", ({ velocity }: { velocity: number }) => {
+      ScrollTrigger.update();
+      window.dispatchEvent(
+        new CustomEvent("lenis-scroll", { detail: { velocity } })
+      );
+    });
 
     // Drive Lenis via GSAP ticker
     const ticker = (time: number) => lenis.raf(time * 1000);

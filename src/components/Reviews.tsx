@@ -47,7 +47,8 @@ export default function Reviews() {
         scrollTrigger: { trigger: sectionRef.current, start: "top 88%", once: true },
       });
       gsap.from(".reviews-h2", {
-        y: 45, opacity: 0, duration: 1, ease: "expo.out", ...st,
+        clipPath: "inset(0 0 100% 0)", y: 8,
+        duration: 1.1, ease: "expo.out", immediateRender: false,
         scrollTrigger: { trigger: sectionRef.current, start: "top 85%", once: true },
       });
       gsap.from(".reviews-badge", {

@@ -49,7 +49,8 @@ export default function Stats() {
         scrollTrigger: { trigger: sectionRef.current, start: "top 88%", once: true },
       });
       gsap.from(".stats-heading", {
-        y: 40, opacity: 0, duration: 1, ease: "expo.out", ...st,
+        clipPath: "inset(0 0 100% 0)", y: 8,
+        duration: 1.1, ease: "expo.out", immediateRender: false,
         scrollTrigger: { trigger: sectionRef.current, start: "top 85%", once: true },
       });
 

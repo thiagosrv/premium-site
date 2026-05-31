@@ -77,7 +77,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           />
 
           {/* ══ 1. HIGHLIGHTS — fundo amarelo ══════════════════════════ */}
-          <div className="hl-band py-14 px-8 md:px-20 lg:px-32" style={{ background: YELLOW }}>
+          <div className="hl-band py-14 px-8 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
             <div className="max-w-7xl mx-auto grid grid-cols-3 gap-4 md:gap-10">
               {service.highlights.map(({ label, value }) => (
                 <div key={label} className="hl-stat flex flex-col items-center text-center gap-1.5">
@@ -242,7 +242,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 4. PROCESSO — fundo amarelo ════════════════════════════ */}
-          <section className="proc-section py-24 px-8 md:px-20 lg:px-32" style={{ background: YELLOW }}>
+          <section className="proc-section py-24 px-8 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
             <div className="max-w-7xl mx-auto">
               <div className="mb-14">
                 <span

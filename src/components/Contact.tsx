@@ -41,6 +41,11 @@ export default function Contact() {
         x: -60, opacity: 0, duration: 1.1, ease: "expo.out", ...st,
         scrollTrigger: { trigger: sectionRef.current, start: "top 88%", once: true },
       });
+      gsap.from(".contact-h2", {
+        clipPath: "inset(0 0 100% 0)", y: 8,
+        duration: 1.2, ease: "expo.out", immediateRender: false,
+        scrollTrigger: { trigger: sectionRef.current, start: "top 82%", once: true },
+      });
       gsap.from(".contact-form", {
         x: 60, opacity: 0, duration: 1.1, ease: "expo.out", ...st,
         scrollTrigger: { trigger: sectionRef.current, start: "top 88%", once: true },
@@ -90,7 +95,7 @@ export default function Contact() {
             <span className="block mb-4 text-[#FEBE00] tracking-[0.32em] uppercase text-xs" style={{ fontFamily: "var(--font-inter)" }}>
               Fale Conosco
             </span>
-            <h2 className="text-white mb-6 leading-tight" style={{
+            <h2 className="contact-h2 text-white mb-6 leading-tight" style={{
               fontFamily: "var(--font-cormorant)",
               fontSize: "clamp(1.9rem, 3.6vw, 3.2rem)",
               fontWeight: 700,
