@@ -204,7 +204,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                     Por que escolher a PS Proteção
                   </h2>
                 </div>
-                <p className="text-white/40 max-w-xs" style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem" }}>
+                <p className="text-white/58 max-w-xs" style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem" }}>
                   27 anos de experiência se traduzem em processos confiáveis e resultados consistentes.
                 </p>
               </div>
@@ -237,7 +237,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                     </h3>
                     <p
                       className="leading-relaxed"
-                      style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem", color: "rgba(255,255,255,0.45)", lineHeight: 1.75 }}
+                      style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.75 }}
                     >
                       {desc}
                     </p>
@@ -307,7 +307,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                 >
                   {service.cta.headline}
                 </h2>
-                <p className="leading-relaxed" style={{ fontFamily: "var(--font-inter)", fontSize: "0.925rem", color: "rgba(255,255,255,0.45)" }}>
+                <p className="leading-relaxed" style={{ fontFamily: "var(--font-inter)", fontSize: "0.925rem", color: "rgba(255,255,255,0.65)" }}>
                   {service.cta.sub}
                 </p>
               </div>
@@ -444,7 +444,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                         <div className="w-11 h-11 flex items-center justify-center mb-5" style={{ background: "rgba(254,190,0,0.08)", border: "1px solid rgba(254,190,0,0.18)" }}>
                           <RelIcon size={18} color={YELLOW} />
                         </div>
-                        <p className="text-[#FEBE00]/50 text-[9px] uppercase tracking-[0.2em] mb-1.5" style={{ fontFamily: "var(--font-inter)" }}>{rel.eyebrow}</p>
+                        <p className="text-[#FEBE00]/60 text-[11px] uppercase tracking-[0.2em] mb-1.5" style={{ fontFamily: "var(--font-inter)" }}>{rel.eyebrow}</p>
                         <p className="text-white/70 group-hover:text-white transition-colors text-sm font-medium mb-4 flex-1" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.05rem", fontWeight: 600, lineHeight: 1.4 }}>
                           {rel.subtitle.split(".")[0]}.
                         </p>

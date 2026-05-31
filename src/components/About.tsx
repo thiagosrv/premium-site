@@ -132,7 +132,7 @@ export default function About() {
           </h2>
 
           <p
-            className="about-para text-white/55 mb-5 leading-relaxed"
+            className="about-para text-white/68 mb-5 leading-relaxed"
             style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem" }}
           >
             Fundada em 1997, a PS Proteção é referência em segurança e facilities na
@@ -140,7 +140,7 @@ export default function About() {
             patrimônios e operações com responsabilidade, eficiência e respeito.
           </p>
           <p
-            className="about-para text-white/55 mb-10 leading-relaxed"
+            className="about-para text-white/68 mb-10 leading-relaxed"
             style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem" }}
           >
             Da portaria à zeladoria, entregamos terceirização integrada com processo,

@@ -172,7 +172,7 @@ export default function Services() {
 
               {tag && (
                 <div
-                  className="absolute top-5 right-5 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.15em]"
+                  className="absolute top-5 right-5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]"
                   style={{
                     background: featured ? "rgba(254,190,0,0.18)" : "rgba(255,255,255,0.06)",
                     border: featured ? "1px solid rgba(254,190,0,0.4)" : "1px solid rgba(255,255,255,0.1)",
@@ -200,7 +200,7 @@ export default function Services() {
               }}>
                 {title}
               </h3>
-              <p className="text-white/50 leading-relaxed relative z-10 flex-1" style={{
+              <p className="text-white/65 leading-relaxed relative z-10 flex-1" style={{
                 fontFamily: "var(--font-inter)", fontSize: "0.875rem", lineHeight: "1.7",
               }}>
                 {description}

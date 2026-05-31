@@ -83,7 +83,7 @@ export default function Solucoes() {
                       <Icon size={20} color="#FEBE00" />
                     </div>
 
-                    <p className="text-[#FEBE00]/60 text-[9px] uppercase tracking-[0.2em] mb-1.5 relative z-10" style={{ fontFamily: "var(--font-inter)" }}>
+                    <p className="text-[#FEBE00]/70 text-[11px] uppercase tracking-[0.2em] mb-1.5 relative z-10" style={{ fontFamily: "var(--font-inter)" }}>
                       {eyebrow}
                     </p>
                     <p className="text-white/70 group-hover:text-white transition-colors duration-300 leading-snug mb-4 relative z-10 flex-1" style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem" }}>

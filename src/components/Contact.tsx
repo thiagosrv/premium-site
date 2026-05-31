@@ -104,7 +104,7 @@ export default function Contact() {
             }}>
               Proteja seu negócio.<br />Fale com um especialista agora.
             </h2>
-            <p className="text-white/45 mb-10 leading-relaxed" style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem" }}>
+            <p className="text-white/65 mb-10 leading-relaxed" style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem" }}>
               Nossa central funciona ininterruptamente. Entre em contato e receba
               um diagnóstico gratuito e proposta personalizada para sua empresa ou condomínio.
             </p>
@@ -169,12 +169,12 @@ export default function Contact() {
               <h3 className="text-white mb-1" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.7rem", fontWeight: 700 }}>
                 Solicitar Proposta
               </h3>
-              <p className="text-white/35 text-xs mb-2" style={{ fontFamily: "var(--font-inter)" }}>
+              <p className="text-white/55 text-xs mb-2" style={{ fontFamily: "var(--font-inter)" }}>
                 Resposta em até 24h úteis
               </p>
 
               <div className="form-field flex flex-col gap-1.5">
-                <label htmlFor="name" className="text-white/40 text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Nome completo</label>
+                <label htmlFor="name" className="text-white/55 text-[11px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Nome completo</label>
                 <input id="name" type="text" {...register("name")}
                   className="bg-transparent px-4 py-3 text-white text-sm outline-none transition-colors duration-300"
                   style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)", borderRadius: "5px" }}
@@ -184,7 +184,7 @@ export default function Contact() {
               </div>
 
               <div className="form-field flex flex-col gap-1.5">
-                <label htmlFor="phone" className="text-white/40 text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Telefone / WhatsApp</label>
+                <label htmlFor="phone" className="text-white/55 text-[11px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Telefone / WhatsApp</label>
                 <input id="phone" type="tel" {...register("phone")}
                   className="bg-transparent px-4 py-3 text-white text-sm outline-none transition-colors duration-300"
                   style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)", borderRadius: "5px" }}
@@ -194,7 +194,7 @@ export default function Contact() {
               </div>
 
               <div className="form-field flex flex-col gap-1.5">
-                <label htmlFor="message" className="text-white/40 text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Mensagem</label>
+                <label htmlFor="message" className="text-white/55 text-[11px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Mensagem</label>
                 <textarea id="message" rows={4} {...register("message")}
                   className="bg-transparent px-4 py-3 text-white text-sm outline-none transition-colors duration-300 resize-none"
                   style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)", borderRadius: "5px" }}

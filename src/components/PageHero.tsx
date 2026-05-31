@@ -50,14 +50,14 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs }: P
                 {crumb.href ? (
                   <Link
                     href={crumb.href}
-                    className="text-white/35 hover:text-[#FEBE00] transition-colors duration-200 text-[10px] uppercase tracking-[0.2em]"
+                    className="text-white/50 hover:text-[#FEBE00] transition-colors duration-200 text-[11px] uppercase tracking-[0.2em]"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
                     {crumb.label}
                   </Link>
                 ) : (
                   <span
-                    className="text-[#FEBE00]/70 text-[10px] uppercase tracking-[0.2em]"
+                    className="text-[#FEBE00]/70 text-[11px] uppercase tracking-[0.2em]"
                     style={{ fontFamily: "var(--font-inter)" }}
                   >
                     {crumb.label}

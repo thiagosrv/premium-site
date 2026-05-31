@@ -181,7 +181,7 @@ export default function Stats() {
 
               {/* Description */}
               <p
-                className="relative z-10 text-white/45 leading-relaxed mt-auto"
+                className="relative z-10 text-white/62 leading-relaxed mt-auto"
                 style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem" }}
               >
                 {description}

@@ -6,9 +6,8 @@ import CTAPrimary from "./CTAPrimary";
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Pre-split words for React-safe stagger animation
-const headline1 = ["Segurança,", "Controle", "de", "Acesso"];
-const headline2 = ["e", "Facilities", "com"];
+// Headline em 2 linhas — impacto máximo, menos fragmentação
+const headline1 = ["Segurança", "e", "Facilities"];
 
 export default function Hero() {
   const heroRef = useRef<HTMLElement>(null);
@@ -161,60 +160,42 @@ export default function Hero() {
             </span>
           </div>
 
-          {/* H1 — word-by-word stagger */}
+          {/* H1 — 2 linhas limpas */}
           <h1
-            className="text-white mb-3 tracking-tight"
+            className="text-white mb-6 tracking-tight"
             style={{
               fontFamily: "var(--font-cormorant)",
-              fontSize: "clamp(2.2rem, 4.6vw, 5.2rem)",
-              fontWeight: 800,
-              lineHeight: 1.08,
+              lineHeight: 1.05,
             }}
           >
-            {/* Line 1 */}
-            <span className="block">
+            {/* Linha principal — grande e bold */}
+            <span
+              className="block"
+              style={{ fontSize: "clamp(2.4rem, 5.2vw, 6rem)", fontWeight: 800 }}
+            >
               {headline1.map((word, i) => (
                 <span
                   key={i}
-                  className="hero-word inline-block mr-[0.25em]"
+                  className="hero-word inline-block mr-[0.22em]"
                   style={{ display: "inline-block" }}
                 >
                   {word}
                 </span>
               ))}
             </span>
-            {/* Line 2 */}
-            <span className="block">
-              {headline2.map((word, i) => (
-                <span
-                  key={i}
-                  className="hero-word inline-block mr-[0.25em]"
-                  style={{ display: "inline-block" }}
-                >
-                  {word}
-                </span>
-              ))}
+            {/* Linha de acento — menor, itálica, amarela */}
+            <span
+              className="block"
+              style={{ fontSize: "clamp(1.5rem, 3.2vw, 3.6rem)", fontWeight: 300 }}
+            >
               <em
-                className="hero-accent-word not-italic inline-block"
-                style={{ color: "#FEBE00", fontWeight: 300, fontStyle: "italic" }}
+                className="hero-accent-word not-italic"
+                style={{ color: "#FEBE00", fontStyle: "italic", opacity: 0.9 }}
               >
-                Padrão Técnico
+                com Padrão Técnico
               </em>
             </span>
           </h1>
-
-          {/* Sub-headline */}
-          <p
-            className="text-white/40 mb-5 tracking-widest uppercase"
-            style={{
-              fontFamily: "var(--font-inter)",
-              fontSize: "clamp(0.65rem, 0.85vw, 0.78rem)",
-              fontWeight: 500,
-              letterSpacing: "0.22em",
-            }}
-          >
-            27 Anos de Experiência — Americana-SP — Desde 1997
-          </p>
 
           {/* H2 */}
           <h2
@@ -245,7 +226,7 @@ export default function Hero() {
               href="#servicos"
               className="px-8 py-4 text-white font-medium transition-all duration-300 hover:bg-white/10 inline-block"
               style={{
-                border: "1px solid rgba(254,190,0,0.35)",
+                border: "1px solid rgba(254,190,0,0.6)",
                 background: "rgba(255,255,255,0.04)",
                 backdropFilter: "blur(12px)",
                 fontFamily: "var(--font-inter)",

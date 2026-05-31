@@ -125,7 +125,7 @@ export default function Reviews() {
               <div className="flex gap-0.5 mb-0.5">
                 {[...Array(5)].map((_, i) => <Star key={i} size={11} color="#FEBE00" fill="#FEBE00" />)}
               </div>
-              <p className="text-white/40 text-[10px] uppercase tracking-widest" style={{ fontFamily: "var(--font-inter)" }}>
+              <p className="text-white/40 text-[11px] uppercase tracking-widest" style={{ fontFamily: "var(--font-inter)" }}>
                 4.8 · Google Reviews
               </p>
             </div>
@@ -162,14 +162,14 @@ export default function Reviews() {
               <div className="flex gap-1 mb-4">
                 {[...Array(stars)].map((_, i) => <Star key={i} size={13} color="#FEBE00" fill="#FEBE00" />)}
               </div>
-              <p className="text-white/55 leading-relaxed flex-1 mb-6" style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem" }}>
+              <p className="text-white/70 leading-relaxed flex-1 mb-6" style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem" }}>
                 &ldquo;{text}&rdquo;
               </p>
               <div className="pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
                 <p className="text-white" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.05rem", fontWeight: 600 }}>
                   {name}
                 </p>
-                <p className="text-[#FEBE00]/60 text-[10px] uppercase tracking-[0.15em] mt-0.5" style={{ fontFamily: "var(--font-inter)" }}>
+                <p className="text-[#FEBE00]/60 text-[11px] uppercase tracking-[0.15em] mt-0.5" style={{ fontFamily: "var(--font-inter)" }}>
                   {role}
                 </p>
               </div>
