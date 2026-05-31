@@ -12,6 +12,7 @@ import {
 import Navbar from "./Navbar";
 import FloatingWhatsApp from "./FloatingWhatsApp";
 import PageHero from "./PageHero";
+import CTAPrimary from "./CTAPrimary";
 import type { ServiceData } from "@/lib/services";
 import { getRelatedServices } from "@/lib/services";
 
@@ -140,7 +141,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                 <a
                   href={`https://wa.me/5519978210246?text=Ol%C3%A1!%20Tenho%20interesse%20em%20${encodeURIComponent(service.eyebrow)}.`}
                   target="_blank" rel="noopener noreferrer"
-                  className="cta-primary inline-flex items-center gap-2 px-7 py-3.5 font-semibold"
+                  className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold"
                   style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
                 >
                   <MessageCircle size={15} /> Solicitar Proposta
@@ -210,6 +211,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                     style={{
                       background: NAVY,
                       borderTop: i < 3 ? "none" : undefined,
+                      borderRadius: "5px",
                     }}
                   >
                     {/* Hover yellow top bar */}
@@ -304,14 +306,14 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-                <a
+                <CTAPrimary
                   href={`https://wa.me/5519978210246?text=Ol%C3%A1!%20Gostaria%20de%20um%20diagn%C3%B3stico%20gratuito%20para%20${encodeURIComponent(service.eyebrow)}.`}
                   target="_blank" rel="noopener noreferrer"
-                  className="cta-primary inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold whitespace-nowrap"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold whitespace-nowrap"
                   style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
                 >
                   <MessageCircle size={16} /> Chamar no WhatsApp
-                </a>
+                </CTAPrimary>
                 <Link
                   href="/contato"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 font-semibold whitespace-nowrap transition-all duration-300 hover:border-[#FEBE00]/50 hover:text-white"
@@ -394,14 +396,14 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                 <p className="text-white/70 text-sm" style={{ fontFamily: "var(--font-inter)" }}>
                   Não encontrou sua dúvida? Fale com um especialista.
                 </p>
-                <a
+                <CTAPrimary
                   href="https://wa.me/5519978210246"
                   target="_blank" rel="noopener noreferrer"
-                  className="cta-primary inline-flex items-center gap-2 px-6 py-3 font-semibold shrink-0 whitespace-nowrap"
+                  className="inline-flex items-center gap-2 px-6 py-3 font-semibold shrink-0 whitespace-nowrap"
                   style={{ fontFamily: "var(--font-inter)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
                 >
                   <MessageCircle size={14} /> Perguntar no WhatsApp
-                </a>
+                </CTAPrimary>
               </div>
             </div>
           </section>
@@ -429,7 +431,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                         key={rel.slug}
                         href={`/solucoes/${rel.slug}`}
                         className="rel-card group flex flex-col p-7 transition-all duration-400 hover:-translate-y-1 overflow-hidden relative"
-                        style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}
+                        style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)", borderRadius: "5px" }}
                       >
                         {/* Yellow top line on hover */}
                         <div className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300" style={{ background: YELLOW }} />

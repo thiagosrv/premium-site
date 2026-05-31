@@ -2,6 +2,7 @@
 import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CTAPrimary from "./CTAPrimary";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -232,20 +233,14 @@ export default function Hero() {
 
           {/* CTAs */}
           <div ref={ctaRef} className="flex flex-wrap gap-4">
-            <a
+            <CTAPrimary
               href="https://wa.me/5519978210246"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-primary px-8 py-4 font-semibold inline-block"
-              style={{
-                fontFamily: "var(--font-inter)",
-                fontSize: "0.78rem",
-                letterSpacing: "0.12em",
-                textTransform: "uppercase",
-              }}
+              target="_blank" rel="noopener noreferrer"
+              className="px-8 py-4 font-semibold inline-block"
+              style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.12em", textTransform: "uppercase" }}
             >
               Solicitar Diagnóstico Gratuito
-            </a>
+            </CTAPrimary>
             <a
               href="#servicos"
               className="px-8 py-4 text-white font-medium transition-all duration-300 hover:bg-white/10 inline-block"
@@ -257,6 +252,7 @@ export default function Hero() {
                 fontSize: "0.78rem",
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
+                borderRadius: "5px",
               }}
             >
               Conheça os Serviços ↓

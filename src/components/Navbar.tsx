@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import CTAPrimary from "./CTAPrimary";
 gsap.registerPlugin();
 
 export default function Navbar() {
@@ -80,15 +81,14 @@ export default function Navbar() {
             </li>
           ))}
           <li>
-            <a
+            <CTAPrimary
               href="https://wa.me/5519978210246"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="cta-primary px-6 py-2.5 text-xs uppercase tracking-[0.15em] font-semibold inline-block"
+              target="_blank" rel="noopener noreferrer"
+              className="px-6 py-2.5 text-xs uppercase tracking-[0.15em] font-semibold inline-block"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               Diagnóstico Gratuito
-            </a>
+            </CTAPrimary>
           </li>
         </ul>
 
@@ -119,16 +119,15 @@ export default function Navbar() {
               {label}
             </Link>
           ))}
-          <a
+          <CTAPrimary
             href="https://wa.me/5519978210246"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="cta-primary px-6 py-3 text-center text-xs uppercase tracking-[0.15em] font-semibold mt-2 inline-block"
+            target="_blank" rel="noopener noreferrer"
+            className="px-6 py-3 text-center text-xs uppercase tracking-[0.15em] font-semibold mt-2 inline-block"
             style={{ fontFamily: "var(--font-inter)" }}
             onClick={() => setMenuOpen(false)}
           >
             Diagnóstico Gratuito
-          </a>
+          </CTAPrimary>
         </div>
       )}
     </nav>

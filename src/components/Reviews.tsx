@@ -110,7 +110,7 @@ export default function Reviews() {
 
           <div
             className="reviews-badge flex items-center gap-3 px-5 py-4 border border-white/8 shrink-0"
-            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(8px)" }}
+            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(8px)", borderRadius: "5px" }}
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -134,7 +134,7 @@ export default function Reviews() {
           href={NAP.gmb}
           target="_blank" rel="noopener noreferrer"
           className="gmb-cta group flex items-center gap-3 mb-12 px-5 py-3.5 border border-[#FEBE00]/20 hover:border-[#FEBE00]/50 transition-all duration-300 hover:-translate-y-0.5 w-full md:w-auto inline-flex"
-          style={{ background: "rgba(254,190,0,0.05)", backdropFilter: "blur(8px)" }}
+          style={{ background: "rgba(254,190,0,0.05)", backdropFilter: "blur(8px)", borderRadius: "5px" }}
         >
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => <Star key={i} size={12} color="#FEBE00" fill="#FEBE00" />)}
@@ -151,7 +151,7 @@ export default function Reviews() {
             <div
               key={name}
               className="review-card group flex flex-col p-7 border border-white/7 transition-all duration-500 hover:-translate-y-1 hover:border-[#FEBE00]/20"
-              style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(8px)" }}
+              style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(8px)", borderRadius: "5px" }}
             >
               <div className="review-quote mb-4">
                 <Quote size={22} color="#FEBE00" style={{ opacity: 0.4 }} />

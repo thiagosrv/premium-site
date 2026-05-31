@@ -3,6 +3,7 @@ import { useRef, useEffect } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Shield, Car, Camera, Lock, UserCheck, AlertTriangle, ArrowRight } from "lucide-react";
+import CTAPrimary from "./CTAPrimary";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -127,14 +128,14 @@ export default function Services() {
               Terceirização integrada com processo, supervisão e relatório
             </h2>
           </div>
-          <a
+          <CTAPrimary
             href="https://wa.me/5519978210246"
             target="_blank" rel="noopener noreferrer"
-            className="cta-primary shrink-0 inline-flex items-center gap-2 px-6 py-3 font-semibold"
+            className="shrink-0 inline-flex items-center gap-2 px-6 py-3 font-semibold"
             style={{ fontFamily: "var(--font-inter)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
           >
             Solicitar Diagnóstico <ArrowRight size={14} />
-          </a>
+          </CTAPrimary>
         </div>
 
         <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -153,6 +154,7 @@ export default function Services() {
                   ? "0 16px 60px rgba(254,190,0,0.10), 0 4px 20px rgba(0,0,0,0.5), inset 0 1px 0 rgba(254,190,0,0.12)"
                   : "0 8px 40px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.04)",
                 backdropFilter: "blur(10px)",
+                borderRadius: "5px",
               }}
             >
               <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" style={{

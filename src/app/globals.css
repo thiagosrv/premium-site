@@ -34,16 +34,45 @@
   }
 }
 
-/* CTA primary button — yellow, hover turns WhatsApp green */
+/* ── Border radius padrão 5 px ──────────────────────────────────────── */
+:root { --r: 5px; }
+
+/* Aplica a todos os elementos com borda visível */
+.cta-primary,
+input, textarea, button,
+[data-rounded] {
+  border-radius: var(--r);
+}
+
+/* ── CTA primary — amarelo → verde WhatsApp no hover ────────────────── */
 .cta-primary {
   background: linear-gradient(135deg, #FEBE00 0%, #F29F05 100%);
   color: #000B38;
-  transition: background 0.35s ease, transform 0.25s ease, box-shadow 0.35s ease;
+  border-radius: var(--r);
+  transition: background 0.3s ease, transform 0.22s ease, box-shadow 0.3s ease;
+  white-space: nowrap;
 }
 .cta-primary:hover {
   background: linear-gradient(135deg, #25D366 0%, #1DAF54 100%);
   box-shadow: 0 8px 32px rgba(37, 211, 102, 0.30);
   transform: scale(1.03);
+  color: #fff;
+}
+
+/* ── Dot pulsante dentro do CTA ─────────────────────────────────────── */
+.cta-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #fff;
+  flex-shrink: 0;
+  animation: cta-dot-pulse 1.1s ease-in-out infinite;
+}
+
+@keyframes cta-dot-pulse {
+  0%, 100% { opacity: 1;   transform: scale(1);    box-shadow: 0 0 0 0   rgba(255,255,255,0.6); }
+  50%       { opacity: 0.55; transform: scale(0.65); box-shadow: 0 0 0 4px rgba(255,255,255,0);   }
 }
 
 /* Film grain overlay */

@@ -20,6 +20,7 @@ export default function FloatingWhatsApp() {
       style={{
         background: "#1DAF54",
         boxShadow: "-4px 4px 24px rgba(29,175,84,0.35)",
+        borderRadius: "5px 0 0 5px",
         transform: visible ? "translateX(0)" : "translateX(110%)",
         opacity: visible ? 1 : 0,
         transition: "transform 0.55s cubic-bezier(0.22,1,0.36,1), opacity 0.4s ease",

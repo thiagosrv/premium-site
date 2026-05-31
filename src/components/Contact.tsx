@@ -4,6 +4,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
 import { Phone, Mail, MapPin, MessageCircle, ExternalLink } from "lucide-react";
+import CTAPrimary from "./CTAPrimary";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -126,15 +127,15 @@ export default function Contact() {
             </address>
 
             {/* WhatsApp CTA */}
-            <a
+            <CTAPrimary
               href={NAP.whatsapp}
               target="_blank" rel="noopener noreferrer"
-              className="contact-cta cta-primary inline-flex items-center gap-3 px-7 py-4 font-semibold mb-10"
+              className="contact-cta inline-flex items-center gap-3 px-7 py-4 font-semibold mb-10"
               style={{ fontFamily: "var(--font-inter)", fontSize: "0.8rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
             >
               <MessageCircle size={17} />
               Chamar no WhatsApp
-            </a>
+            </CTAPrimary>
 
             {/* Address badge */}
             <a
@@ -156,7 +157,7 @@ export default function Contact() {
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="flex flex-col gap-5 p-8 border border-white/7"
-              style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(16px)" }}
+              style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(16px)", borderRadius: "5px" }}
             >
               <h3 className="text-white mb-1" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.7rem", fontWeight: 700 }}>
                 Solicitar Proposta
@@ -169,7 +170,7 @@ export default function Contact() {
                 <label htmlFor="name" className="text-white/40 text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Nome completo</label>
                 <input id="name" type="text" {...register("name")}
                   className="bg-transparent px-4 py-3 text-white text-sm outline-none transition-colors duration-300"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)" }}
+                  style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)", borderRadius: "5px" }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(254,190,0,0.55)")}
                   onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
                 />
@@ -179,7 +180,7 @@ export default function Contact() {
                 <label htmlFor="phone" className="text-white/40 text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Telefone / WhatsApp</label>
                 <input id="phone" type="tel" {...register("phone")}
                   className="bg-transparent px-4 py-3 text-white text-sm outline-none transition-colors duration-300"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)" }}
+                  style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)", borderRadius: "5px" }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(254,190,0,0.55)")}
                   onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
                 />
@@ -189,15 +190,15 @@ export default function Contact() {
                 <label htmlFor="message" className="text-white/40 text-[10px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>Mensagem</label>
                 <textarea id="message" rows={4} {...register("message")}
                   className="bg-transparent px-4 py-3 text-white text-sm outline-none transition-colors duration-300 resize-none"
-                  style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)" }}
+                  style={{ border: "1px solid rgba(255,255,255,0.1)", fontFamily: "var(--font-inter)", borderRadius: "5px" }}
                   onFocus={(e) => (e.currentTarget.style.borderColor = "rgba(254,190,0,0.55)")}
                   onBlur={(e) => (e.currentTarget.style.borderColor = "rgba(255,255,255,0.1)")}
                 />
               </div>
 
-              <button type="submit" className="form-field cta-primary mt-1 py-4 font-semibold uppercase tracking-[0.12em] text-xs" style={{ fontFamily: "var(--font-inter)" }}>
+              <CTAPrimary type="submit" className="form-field mt-1 py-4 font-semibold uppercase tracking-[0.12em] text-xs w-full" style={{ fontFamily: "var(--font-inter)" }}>
                 Enviar Mensagem
-              </button>
+              </CTAPrimary>
             </form>
           </div>
         </div>

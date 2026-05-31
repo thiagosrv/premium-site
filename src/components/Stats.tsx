@@ -128,6 +128,7 @@ export default function Stats() {
                   ? "0 8px 40px rgba(254,190,0,0.12), inset 0 1px 0 rgba(254,190,0,0.15)"
                   : "0 8px 40px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.04)",
                 backdropFilter: "blur(12px)",
+                borderRadius: "5px",
               }}
             >
               {/* Hover glow */}
