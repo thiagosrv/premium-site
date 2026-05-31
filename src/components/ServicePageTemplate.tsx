@@ -4,14 +4,13 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import {
-  MessageCircle, ArrowRight, Plus, Minus, ImageIcon,
+  MessageCircle, ArrowRight, Plus, Minus, ImageIcon, ChevronRight,
   UserCheck, Sparkles, Shield, Car, Coffee, Briefcase,
   Monitor, Wrench, Clock, Users, FileText, Camera, Award,
   Eye, Phone, MapPin, Zap, Settings, Star, Smile, Clipboard,
 } from "lucide-react";
 import Navbar from "./Navbar";
 import FloatingWhatsApp from "./FloatingWhatsApp";
-import PageHero from "./PageHero";
 import CTAPrimary from "./CTAPrimary";
 import type { ServiceData } from "@/lib/services";
 import { getRelatedServices } from "@/lib/services";
@@ -51,6 +50,13 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
     const ctx = gsap.context(() => {
       const st = { immediateRender: false };
 
+      // ServiceHero — imediato (sem ScrollTrigger)
+      gsap.from(".sh-breadcrumb", { y: -10, opacity: 0, duration: 0.5, ease: "power2.out", delay: 0.1 });
+      gsap.from(".sh-eyebrow",    { x: -20, opacity: 0, duration: 0.6, ease: "power3.out", delay: 0.25 });
+      gsap.from(".sh-title",      { y: 30,  opacity: 0, duration: 0.9, ease: "expo.out",   delay: 0.4  });
+      gsap.from(".sh-desc",       { y: 14,  opacity: 0, duration: 0.7, ease: "power3.out", delay: 0.55 });
+      gsap.from(".sh-icon",       { scale: 0.72, opacity: 0, duration: 1.1, ease: "back.out(1.4)", delay: 0.5 });
+
       gsap.from(".hl-stat",      { y: 28, opacity: 0, duration: 0.7, stagger: 0.12, ease: "power3.out", ...st, scrollTrigger: { trigger: ".hl-band",       start: "top 88%", once: true } });
       gsap.from(".intro-col",    { x: -50, opacity: 0, duration: 1,  ease: "expo.out",  ...st, scrollTrigger: { trigger: ".intro-section",  start: "top 86%", once: true } });
       gsap.from(".photo-frame",  { x:  50, opacity: 0, duration: 1,  ease: "expo.out",  ...st, scrollTrigger: { trigger: ".intro-section",  start: "top 86%", once: true } });
@@ -68,65 +74,133 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
       <div ref={pageRef}>
         <main>
           <Navbar />
-          <PageHero
-            eyebrow={service.eyebrow}
-            title={service.title}
-            description={service.subtitle}
-            breadcrumbs={[
-              { label: "Início",   href: "/"         },
-              { label: "Soluções", href: "/solucoes" },
-              { label: service.eyebrow              },
-            ]}
-          />
 
-          {/* ══ 1. HIGHLIGHTS — fundo amarelo ══════════════════════════ */}
-          <div className="hl-band py-14 px-8 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
-            <div className="max-w-7xl mx-auto grid grid-cols-3 gap-4 md:gap-10">
-              {service.highlights.map(({ label, value }) => (
-                <div key={label} className="hl-stat flex flex-col items-center text-center gap-1.5">
-                  <span
-                    style={{
-                      fontFamily: "var(--font-cormorant)",
-                      fontSize: "clamp(2rem, 4vw, 3.4rem)",
-                      fontWeight: 800,
-                      color: NAVY,
-                      lineHeight: 1,
-                    }}
-                  >
-                    {value}
-                  </span>
-                  <span
-                    className="uppercase"
-                    style={{ fontFamily: "var(--font-inter)", fontSize: "0.65rem", letterSpacing: "0.22em", color: "rgba(0,11,56,0.6)" }}
-                  >
-                    {label}
-                  </span>
+          {/* ══ SERVICE HERO — layout split: texto + ícone decorativo ══ */}
+          {(() => {
+            const ServiceIconComp = ICONS[service.icon] ?? Shield;
+            return (
+              <div
+                className="relative pt-36 pb-24 px-8 md:px-20 lg:px-32 overflow-hidden"
+                style={{ background: "linear-gradient(145deg, #000214 0%, #000B38 55%, #040E30 100%)" }}
+              >
+                {/* Ambient glows */}
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 75% 50%, rgba(254,190,0,0.07) 0%, transparent 50%)" }} />
+                <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 10% 80%, rgba(10,25,90,0.45) 0%, transparent 48%)" }} />
+
+                <div className="max-w-7xl mx-auto relative z-10 grid lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
+
+                  {/* ── Coluna de texto ─── */}
+                  <div>
+                    {/* Breadcrumb */}
+                    <nav className="sh-breadcrumb flex items-center gap-1.5 mb-8" aria-label="Breadcrumb">
+                      {[{ label: "Início", href: "/" }, { label: "Soluções", href: "/solucoes" }, { label: service.eyebrow }].map((crumb, i) => (
+                        <span key={crumb.label} className="flex items-center gap-1.5">
+                          {i > 0 && <ChevronRight size={11} color="rgba(255,255,255,0.25)" />}
+                          {crumb.href ? (
+                            <Link href={crumb.href} className="text-white/50 hover:text-[#FEBE00] transition-colors text-[11px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>{crumb.label}</Link>
+                          ) : (
+                            <span className="text-[#FEBE00]/70 text-[11px] uppercase tracking-[0.2em]" style={{ fontFamily: "var(--font-inter)" }}>{crumb.label}</span>
+                          )}
+                        </span>
+                      ))}
+                    </nav>
+
+                    {/* Eyebrow */}
+                    <span className="sh-eyebrow block mb-5 text-[#FEBE00] tracking-[0.32em] uppercase text-xs" style={{ fontFamily: "var(--font-inter)" }}>
+                      {service.eyebrow}
+                    </span>
+
+                    {/* Title */}
+                    <h1
+                      className="sh-title text-white leading-tight mb-6"
+                      style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(2.2rem, 4vw, 3.8rem)", fontWeight: 700 }}
+                    >
+                      {service.title}
+                    </h1>
+
+                    {/* Subtitle */}
+                    <p
+                      className="sh-desc max-w-xl leading-relaxed"
+                      style={{ fontFamily: "var(--font-inter)", fontSize: "1rem", color: "rgba(255,255,255,0.65)", lineHeight: 1.8 }}
+                    >
+                      {service.subtitle}
+                    </p>
+                  </div>
+
+                  {/* ── Ícone decorativo — desktop only ─── */}
+                  <div className="sh-icon hidden lg:flex items-center justify-center shrink-0">
+                    <div className="relative w-64 h-64">
+                      {/* Concentric rings */}
+                      <div className="absolute inset-0 rounded-full" style={{ border: "1px solid rgba(254,190,0,0.10)" }} />
+                      <div className="absolute inset-6 rounded-full" style={{ border: "1px solid rgba(254,190,0,0.18)" }} />
+                      <div className="absolute inset-12 rounded-full" style={{ border: "1px solid rgba(254,190,0,0.28)", background: "rgba(254,190,0,0.04)" }} />
+                      {/* Icon centered */}
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <ServiceIconComp size={72} color="#FEBE00" />
+                      </div>
+                      {/* Dot accents */}
+                      <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full" style={{ background: "#FEBE00", opacity: 0.6 }} />
+                      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-1.5 h-1.5 rounded-full" style={{ background: "#FEBE00", opacity: 0.35 }} />
+                      <div className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-1 h-1 rounded-full" style={{ background: "#FEBE00", opacity: 0.25 }} />
+                    </div>
+                  </div>
                 </div>
-              ))}
+
+                {/* Bottom accent line */}
+                <div className="absolute bottom-0 left-8 md:left-20 lg:left-32 right-8 md:right-20 lg:right-32 h-px" style={{ background: "linear-gradient(90deg, rgba(254,190,0,0.5), transparent)" }} />
+              </div>
+            );
+          })()}
+
+          {/* ══ 1. HIGHLIGHTS — fundo amarelo com dividers ══════════════ */}
+          <div className="hl-band py-12 px-8 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
+            <div className="max-w-7xl mx-auto">
+              <div className="grid grid-cols-3">
+                {service.highlights.map(({ label, value }, i) => (
+                  <div key={label} className="hl-stat flex flex-col items-center text-center py-3 px-4 relative">
+                    {/* Divider vertical */}
+                    {i > 0 && <div className="absolute left-0 top-3 bottom-3 w-px" style={{ background: "rgba(0,11,56,0.2)" }} />}
+                    <span
+                      style={{
+                        fontFamily: "var(--font-cormorant)",
+                        fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                        fontWeight: 800,
+                        color: NAVY,
+                        lineHeight: 1,
+                      }}
+                    >
+                      {value}
+                    </span>
+                    {/* Mini separator */}
+                    <div className="w-6 h-px my-2" style={{ background: "rgba(0,11,56,0.3)" }} />
+                    <span
+                      className="uppercase"
+                      style={{ fontFamily: "var(--font-inter)", fontSize: "0.6rem", letterSpacing: "0.22em", color: "rgba(0,11,56,0.65)" }}
+                    >
+                      {label}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* ══ 2. INTRO + FOTO — fundo branco ═════════════════════════ */}
+          {/* ══ 2. DESCRIÇÃO + FOTO — fundo branco ═════════════════════ */}
           <section className="intro-section py-24 px-8 md:px-20 lg:px-32" style={{ background: WHITE }}>
             <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
-              {/* Text */}
+              {/* Text — sem repetição de título */}
               <div className="intro-col">
-                <span
-                  className="block mb-4 uppercase tracking-[0.28em] text-xs"
-                  style={{ fontFamily: "var(--font-inter)", color: YELLOW, background: NAVY, display: "inline-block", padding: "4px 12px" }}
-                >
-                  {service.eyebrow}
-                </span>
-                <h2
-                  className="mb-6 leading-tight"
-                  style={{ fontFamily: "var(--font-cormorant)", fontSize: "clamp(1.8rem, 3vw, 2.8rem)", fontWeight: 700, color: NAVY }}
-                >
-                  {service.title}
-                </h2>
+                {/* Decorative rule */}
+                <div className="flex items-center gap-4 mb-8">
+                  <div className="w-8 h-px" style={{ background: NAVY }} />
+                  <span className="uppercase tracking-[0.28em] text-xs" style={{ fontFamily: "var(--font-inter)", color: "rgba(0,11,56,0.5)" }}>
+                    Sobre o serviço
+                  </span>
+                </div>
                 <p
                   className="mb-8 leading-relaxed"
-                  style={{ fontFamily: "var(--font-inter)", fontSize: "0.95rem", color: "rgba(0,11,56,0.65)", lineHeight: 1.8 }}
+                  style={{ fontFamily: "var(--font-inter)", fontSize: "1.05rem", color: "rgba(0,11,56,0.72)", lineHeight: 1.85, fontWeight: 400 }}
                 >
                   {service.description}
                 </p>
@@ -135,20 +209,20 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                   {service.highlights.map(({ label, value }) => (
                     <li key={label} className="flex items-center gap-3">
                       <div className="w-1.5 h-1.5 shrink-0" style={{ background: YELLOW }} />
-                      <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem", color: "rgba(0,11,56,0.7)" }}>
+                      <span style={{ fontFamily: "var(--font-inter)", fontSize: "0.9rem", color: "rgba(0,11,56,0.75)" }}>
                         <strong style={{ color: NAVY }}>{value}</strong> — {label}
                       </span>
                     </li>
                   ))}
                 </ul>
-                <a
+                <CTAPrimary
                   href={`https://wa.me/5519978210246?text=Ol%C3%A1!%20Tenho%20interesse%20em%20${encodeURIComponent(service.eyebrow)}.`}
                   target="_blank" rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-7 py-3.5 font-semibold"
                   style={{ fontFamily: "var(--font-inter)", fontSize: "0.78rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
                 >
                   <MessageCircle size={15} /> Solicitar Proposta
-                </a>
+                </CTAPrimary>
               </div>
 
               {/* Photo 16:9 */}
