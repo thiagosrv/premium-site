@@ -8,29 +8,33 @@ gsap.registerPlugin(ScrollTrigger);
 
 const stats = [
   {
-    display: "27 anos",
+    display: "27",
+    unit: "anos",
     label: "No Mercado",
     description: "Desde 1997 entregando segurança e confiança para condomínios e empresas.",
     icon: Clock,
     highlight: true,
   },
   {
-    display: "3.000+",
-    label: "Colaboradores Treinados",
+    display: "3.000",
+    unit: "+",
+    label: "Colaboradores",
     description: "Equipes certificadas, com treinamento contínuo e supervisão ativa.",
     icon: Users,
     highlight: false,
   },
   {
-    display: "1.000+",
-    label: "Clientes Atendidos",
+    display: "1.000",
+    unit: "+",
+    label: "Clientes Ativos",
     description: "Condomínios, indústrias e empresas que confiam na PS Proteção.",
     icon: Building2,
     highlight: false,
   },
   {
-    display: "100+",
-    label: "Cidades Atendidas",
+    display: "100",
+    unit: "+",
+    label: "Cidades",
     description: "Cobertura na Região Metropolitana de Campinas e interior paulista.",
     icon: MapPin,
     highlight: false,
@@ -44,62 +48,61 @@ export default function Stats() {
     const ctx = gsap.context(() => {
       const st = { immediateRender: false };
 
-      // Eyebrow slide in
       gsap.from(".stats-eyebrow", {
         x: -40, opacity: 0, duration: 0.8, ease: "power3.out", ...st,
         scrollTrigger: { trigger: sectionRef.current, start: "top 88%", once: true },
       });
 
-      // H2 word-by-word curtain reveal
+      // H2 word-by-word
       gsap.from(".stats-h2-word", {
         y: "110%", duration: 1.1, stagger: 0.07,
         ease: "expo.out", immediateRender: false,
         scrollTrigger: { trigger: sectionRef.current, start: "top 85%", once: true },
       });
 
-      // Cards — scale + rotateX entrance
-      gsap.from(".stat-card", {
-        y: 65, opacity: 0, scale: 0.9, rotateX: 8,
-        duration: 0.9, stagger: 0.13, ease: "power3.out",
-        immediateRender: false,
+      // Featured card dramatic entrance
+      gsap.from(".stat-featured", {
+        x: -60, opacity: 0, scale: 0.93,
+        duration: 1, ease: "power3.out", immediateRender: false,
         scrollTrigger: { trigger: sectionRef.current, start: "top 82%", once: true },
       });
 
-      // Numbers — big pop entrance
-      gsap.from(".stat-number", {
-        scale: 0.4, opacity: 0, y: 18,
-        duration: 0.85, stagger: 0.13,
-        ease: "back.out(2.2)", immediateRender: false,
-        scrollTrigger: { trigger: sectionRef.current, start: "top 77%", once: true },
-      });
-
-      // Accent lines grow from left
-      gsap.from(".stat-accent-line", {
-        scaleX: 0, transformOrigin: "left center",
-        duration: 0.9, stagger: 0.12, ease: "expo.out", immediateRender: false,
-        scrollTrigger: { trigger: sectionRef.current, start: "top 74%", once: true },
-      });
-
-      // Icons pop in with rotation
-      gsap.from(".stat-icon", {
-        scale: 0, opacity: 0, rotation: -20,
-        duration: 0.65, stagger: 0.13,
-        ease: "back.out(2.5)", immediateRender: false,
+      // Regular cards stagger up
+      gsap.from(".stat-regular", {
+        y: 55, opacity: 0, scale: 0.94,
+        duration: 0.85, stagger: 0.12, ease: "power3.out",
+        immediateRender: false,
         scrollTrigger: { trigger: sectionRef.current, start: "top 80%", once: true },
       });
 
-      // Featured icon: continuous gentle float
+      // Numbers mega pop
+      gsap.from(".stat-number-display", {
+        scale: 0.3, opacity: 0, y: 24,
+        duration: 0.9, stagger: 0.12,
+        ease: "back.out(2.5)", immediateRender: false,
+        scrollTrigger: { trigger: sectionRef.current, start: "top 76%", once: true },
+      });
+
+      // Icon entrance with rotation
+      gsap.from(".stat-icon", {
+        scale: 0, opacity: 0, rotation: -25,
+        duration: 0.6, stagger: 0.12,
+        ease: "back.out(2.8)", immediateRender: false,
+        scrollTrigger: { trigger: sectionRef.current, start: "top 78%", once: true },
+      });
+
+      // Featured icon: gentle float
       gsap.to(".stat-icon-featured", {
-        y: -7, duration: 2.8, ease: "sine.inOut",
-        repeat: -1, yoyo: true, delay: 0.8,
+        y: -8, duration: 3, ease: "sine.inOut",
+        repeat: -1, yoyo: true, delay: 1,
       });
     }, sectionRef);
 
     return () => ctx.revert();
   }, []);
 
-  const h2Line1 = ["Solidez", "e", "escala", "que"];
-  const h2Line2 = ["poucos", "alcançam"];
+  const h2Line1 = ["Solidez", "e", "escala"];
+  const h2Line2 = ["que", "poucos", "alcançam"];
 
   return (
     <section
@@ -115,135 +118,197 @@ export default function Stats() {
     >
       <div className="max-w-7xl mx-auto relative z-10">
 
-        {/* ── Section header ── */}
+        {/* ── Header ── */}
         <div className="mb-12 md:mb-16">
           <div className="stats-eyebrow flex items-center gap-3 mb-5">
             <div className="w-8 h-0.5 shrink-0" style={{ background: "#000B38" }} />
             <span
-              className="tracking-[0.3em] uppercase text-xs font-medium"
+              className="tracking-[0.3em] uppercase text-xs font-semibold"
               style={{ fontFamily: "var(--font-inter)", color: "#000B38" }}
             >
               Números que Comprovam
             </span>
           </div>
-
-          {/* Split-word H2 */}
           <h2
-            className="leading-tight"
+            className="leading-[1.0]"
             style={{
               fontFamily: "var(--font-cormorant)",
-              fontSize: "clamp(2.4rem, 4.6vw, 4.6rem)",
-              fontWeight: 700,
+              fontSize: "clamp(2.8rem, 5.5vw, 5.5rem)",
+              fontWeight: 800,
               color: "#000B38",
             }}
           >
-            {h2Line1.map((word, i) => (
-              <span
-                key={i}
-                style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.22em" }}
-              >
-                <span className="stats-h2-word" style={{ display: "inline-block" }}>{word}</span>
+            {h2Line1.map((w, i) => (
+              <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.2em" }}>
+                <span className="stats-h2-word" style={{ display: "inline-block" }}>{w}</span>
               </span>
             ))}
-            <br className="hidden sm:block" />
-            <em style={{ fontStyle: "italic", fontWeight: 700 }}>
-              {h2Line2.map((word, i) => (
-                <span
-                  key={i}
-                  style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.22em" }}
-                >
-                  <span className="stats-h2-word" style={{ display: "inline-block" }}>{word}</span>
+            <br />
+            <em style={{ fontStyle: "italic" }}>
+              {h2Line2.map((w, i) => (
+                <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.2em" }}>
+                  <span className="stats-h2-word" style={{ display: "inline-block" }}>{w}</span>
                 </span>
               ))}
             </em>
           </h2>
         </div>
 
-        {/* ── Cards grid ── */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
-          {stats.map(({ display, label, description, icon: Icon, highlight }) => (
+        {/* ── Bento grid: featured left + 3 cards right ── */}
+        <div className="flex flex-col md:flex-row gap-4 md:gap-5">
+
+          {/* Featured — navy, gold number, tall */}
+          <div
+            className="stat-featured relative flex flex-col justify-between p-7 md:p-8 overflow-hidden md:w-72 lg:w-80 shrink-0"
+            style={{
+              background: "#000B38",
+              border: "3px solid #000B38",
+              boxShadow: "6px 6px 0 #000B38",
+              borderRadius: "10px",
+              minHeight: "260px",
+            }}
+          >
+            {/* Icon */}
             <div
-              key={label}
-              className="stat-card group relative flex flex-col p-6 md:p-7 overflow-hidden transition-transform duration-300 hover:-translate-y-2"
+              className="stat-icon stat-icon-featured w-12 h-12 flex items-center justify-center mb-auto"
               style={{
-                /* Gradient border trick */
-                background: highlight
-                  ? `#000B38 padding-box,
-                     linear-gradient(135deg, #FEBE00 0%, rgba(254,190,0,0.45) 50%, #FEBE00 100%) border-box`
-                  : `#FFFFFF padding-box,
-                     linear-gradient(135deg, rgba(254,190,0,0.70) 0%, rgba(0,11,56,0.18) 55%, rgba(254,190,0,0.38) 100%) border-box`,
-                border: highlight ? "2px solid transparent" : "1.5px solid transparent",
-                boxShadow: highlight
-                  ? "0 16px 48px rgba(0,11,56,0.32), 0 0 0 6px rgba(254,190,0,0.07)"
-                  : "0 4px 24px rgba(0,11,56,0.12)",
+                background: "rgba(254,190,0,0.12)",
+                border: "1.5px solid rgba(254,190,0,0.3)",
                 borderRadius: "10px",
               }}
             >
-              {/* Hover top accent line */}
-              {!highlight && (
-                <div
-                  className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(0,11,56,0.35), transparent)", borderRadius: "10px 10px 0 0" }}
-                />
-              )}
+              <Clock size={20} color="#FEBE00" />
+            </div>
 
-              {/* Icon */}
+            {/* Big number */}
+            <div className="mt-8">
               <div
-                className={`w-11 h-11 flex items-center justify-center mb-5 shrink-0 stat-icon ${highlight ? "stat-icon-featured" : ""}`}
+                className="stat-number-display leading-none"
                 style={{
-                  background: highlight ? "rgba(254,190,0,0.14)" : "rgba(0,11,56,0.07)",
-                  border: highlight ? "1px solid rgba(254,190,0,0.38)" : "1px solid rgba(0,11,56,0.14)",
+                  fontFamily: "var(--font-cormorant)",
+                  fontSize: "clamp(4.5rem, 8vw, 7.5rem)",
+                  fontWeight: 900,
+                  color: "#FEBE00",
+                  lineHeight: 0.85,
+                }}
+              >
+                {stats[0].display}
+              </div>
+              <div
+                className="mt-1 mb-3 font-semibold tracking-wide"
+                style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "0.9rem",
+                  color: "rgba(254,190,0,0.55)",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.18em",
+                }}
+              >
+                {stats[0].unit}
+              </div>
+              <p
+                className="font-bold"
+                style={{
+                  fontFamily: "var(--font-cormorant)",
+                  fontSize: "1.3rem",
+                  color: "#FFFFFF",
+                }}
+              >
+                {stats[0].label}
+              </p>
+              <p
+                className="mt-1.5 leading-relaxed"
+                style={{
+                  fontFamily: "var(--font-inter)",
+                  fontSize: "0.78rem",
+                  color: "rgba(255,255,255,0.5)",
+                  lineHeight: 1.65,
+                }}
+              >
+                {stats[0].description}
+              </p>
+            </div>
+
+            {/* Decorative corner */}
+            <div
+              className="absolute top-0 right-0 w-24 h-24 pointer-events-none opacity-[0.07]"
+              style={{ background: "radial-gradient(circle at 100% 0%, #FEBE00 0%, transparent 70%)" }}
+            />
+          </div>
+
+          {/* Right grid — 3 white cards */}
+          <div className="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-5">
+            {stats.slice(1).map(({ display, unit, label, description, icon: Icon }) => (
+              <div
+                key={label}
+                className="stat-regular group relative flex flex-col p-6 md:p-7 overflow-hidden transition-transform duration-300 hover:-translate-y-1.5"
+                style={{
+                  background: "#FFFFFF",
+                  border: "2.5px solid #000B38",
+                  boxShadow: "4px 4px 0 #000B38",
                   borderRadius: "10px",
                 }}
               >
-                <Icon size={19} color={highlight ? "#FEBE00" : "#000B38"} />
+                {/* Icon */}
+                <div
+                  className="stat-icon w-10 h-10 flex items-center justify-center mb-5"
+                  style={{
+                    background: "rgba(0,11,56,0.06)",
+                    border: "1.5px solid rgba(0,11,56,0.14)",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Icon size={17} color="#000B38" />
+                </div>
+
+                {/* Number */}
+                <div
+                  className="stat-number-display leading-none"
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    fontSize: "clamp(3rem, 5vw, 4.8rem)",
+                    fontWeight: 900,
+                    color: "#000B38",
+                    lineHeight: 0.9,
+                  }}
+                >
+                  {display}
+                  <span style={{ fontSize: "0.45em", fontWeight: 700, verticalAlign: "super", color: "#FEBE00" }}>{unit}</span>
+                </div>
+
+                {/* Label */}
+                <p
+                  className="mt-3 mb-1.5 font-bold"
+                  style={{
+                    fontFamily: "var(--font-cormorant)",
+                    fontSize: "1.15rem",
+                    color: "#000B38",
+                  }}
+                >
+                  {label}
+                </p>
+
+                {/* Description */}
+                <p
+                  className="mt-auto leading-relaxed"
+                  style={{
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "0.78rem",
+                    color: "rgba(0,11,56,0.52)",
+                    lineHeight: 1.65,
+                  }}
+                >
+                  {description}
+                </p>
+
+                {/* Hover: gold bottom accent */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  style={{ background: "#FEBE00", borderRadius: "0 0 10px 10px" }}
+                />
               </div>
-
-              {/* Number */}
-              <div
-                className="stat-number leading-none mb-1"
-                style={{
-                  fontFamily: "var(--font-cormorant)",
-                  fontSize: "clamp(2.6rem, 4.2vw, 3.8rem)",
-                  fontWeight: 800,
-                  color: highlight ? "#FEBE00" : "#000B38",
-                }}
-              >
-                {display}
-              </div>
-
-              {/* Accent line */}
-              <div
-                className="stat-accent-line h-px w-10 mb-3"
-                style={{ background: highlight ? "rgba(254,190,0,0.55)" : "rgba(0,11,56,0.28)" }}
-              />
-
-              {/* Label */}
-              <p
-                className="mb-2 font-semibold"
-                style={{
-                  fontFamily: "var(--font-cormorant)",
-                  fontSize: "1.12rem",
-                  color: highlight ? "#FFFFFF" : "#000B38",
-                }}
-              >
-                {label}
-              </p>
-
-              {/* Description */}
-              <p
-                className="leading-relaxed mt-auto"
-                style={{
-                  fontFamily: "var(--font-inter)",
-                  fontSize: "0.8rem",
-                  color: highlight ? "rgba(255,255,255,0.65)" : "rgba(0,11,56,0.55)",
-                  lineHeight: "1.7",
-                }}
-              >
-                {description}
-              </p>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
       </div>
     </section>

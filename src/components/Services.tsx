@@ -58,22 +58,6 @@ const services = [
   },
 ];
 
-// Helper: split a string into word spans for animation
-function WordSplit({ text, className }: { text: string; className: string }) {
-  return (
-    <>
-      {text.split(" ").map((word, i) => (
-        <span
-          key={i}
-          style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.22em" }}
-        >
-          <span className={className} style={{ display: "inline-block" }}>{word}</span>
-        </span>
-      ))}
-    </>
-  );
-}
-
 export default function Services() {
   const sectionRef = useRef<HTMLElement>(null);
   const gridRef    = useRef<HTMLDivElement>(null);
@@ -88,7 +72,6 @@ export default function Services() {
         scrollTrigger: { trigger: sectionRef.current, start: "top 88%", once: true },
       });
 
-      // Word-by-word H2 curtain reveal
       gsap.from(".services-h2-word", {
         y: "110%", duration: 1.05, stagger: 0.065,
         ease: "expo.out", immediateRender: false,
@@ -98,23 +81,22 @@ export default function Services() {
       if (gridRef.current) {
         const cards = gridRef.current.querySelectorAll(".service-card");
         gsap.set(cards, { transformPerspective: 900 });
-        // Dramatic 3-axis entrance
         gsap.from(cards, {
-          y: 90, opacity: 0, rotateX: 16, scale: 0.93,
+          y: 90, opacity: 0, rotateX: 14, scale: 0.94,
           duration: 1.05, stagger: { each: 0.1, from: "start" },
           ease: "power3.out", immediateRender: false,
           scrollTrigger: { trigger: gridRef.current, start: "top 88%", once: true },
         });
         const icons = gridRef.current.querySelectorAll(".service-icon-wrap");
         gsap.from(icons, {
-          scale: 0, opacity: 0, rotation: -15, duration: 0.65, stagger: 0.1,
+          scale: 0, opacity: 0, rotation: -20, duration: 0.65, stagger: 0.1,
           ease: "back.out(2.8)", immediateRender: false,
           scrollTrigger: { trigger: gridRef.current, start: "top 84%", once: true },
         });
       }
     }, sectionRef);
 
-    // ── 3D Tilt on hover — interactive per-card ────────────────────────
+    // ── 3D Tilt hover ──────────────────────────────────────────────────
     const tiltCards = gridRef.current
       ? Array.from(gridRef.current.querySelectorAll<HTMLElement>(".service-card"))
       : [];
@@ -158,40 +140,49 @@ export default function Services() {
       id="servicos"
       ref={sectionRef}
       className="py-16 md:py-24 lg:py-32 px-6 md:px-20 lg:px-32 relative overflow-hidden"
-      style={{ background: "linear-gradient(135deg, #010412 0%, #040926 45%, #0A1540 100%)" }}
+      style={{ background: "linear-gradient(160deg, #020715 0%, #050C24 50%, #0B1540 100%)" }}
     >
       <div className="section-grid" aria-hidden="true" />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 20% 50%, rgba(254,190,0,0.06) 0%, transparent 55%)" }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 85% 15%, rgba(20,40,120,0.35) 0%, transparent 45%)" }} />
+      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 15% 50%, rgba(254,190,0,0.055) 0%, transparent 50%)" }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
 
         {/* ── Header ── */}
-        <div className="mb-10 md:mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 md:gap-6">
+        <div className="mb-10 md:mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
           <div className="max-w-2xl">
             <span
-              className="services-eyebrow block mb-5 text-[#FEBE00] tracking-[0.32em] uppercase text-xs"
+              className="services-eyebrow block mb-5 text-[#FEBE00] tracking-[0.35em] uppercase text-xs font-semibold"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               O que fazemos
             </span>
-
-            {/* H2 — split word, com destaque dourado nas palavras de impacto */}
             <h2
-              className="text-white leading-tight"
+              className="text-white leading-[1.0]"
               style={{
                 fontFamily: "var(--font-cormorant)",
-                fontSize: "clamp(2.4rem, 4.6vw, 4.6rem)",
-                fontWeight: 700,
+                fontSize: "clamp(2.8rem, 5.5vw, 5.5rem)",
+                fontWeight: 800,
               }}
             >
-              <WordSplit text="Terceirização integrada" className="services-h2-word" />
-              <br className="hidden md:block" />
+              {["Terceirização", "integrada"].map((w, i) => (
+                <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.2em" }}>
+                  <span className="services-h2-word" style={{ display: "inline-block" }}>{w}</span>
+                </span>
+              ))}
+              <br />
               <em style={{ fontStyle: "italic", color: "#FEBE00" }}>
-                <WordSplit text="com processo" className="services-h2-word" />
+                {["com", "processo"].map((w, i) => (
+                  <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.2em" }}>
+                    <span className="services-h2-word" style={{ display: "inline-block" }}>{w}</span>
+                  </span>
+                ))}
               </em>
               {" "}
-              <WordSplit text="e supervisão" className="services-h2-word" />
+              {["e", "supervisão"].map((w, i) => (
+                <span key={i} style={{ display: "inline-block", overflow: "hidden", verticalAlign: "bottom", marginRight: "0.2em" }}>
+                  <span className="services-h2-word" style={{ display: "inline-block" }}>{w}</span>
+                </span>
+              ))}
             </h2>
           </div>
 
@@ -205,87 +196,127 @@ export default function Services() {
           </CTAPrimary>
         </div>
 
-        {/* ── Service cards grid ── */}
-        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* ── Cards ── */}
+        <div ref={gridRef} className="grid md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5">
           {services.map(({ icon: Icon, title, description, tag, featured }) => (
             <div
               key={title}
-              className="service-card group relative flex flex-col p-5 md:p-8 overflow-hidden cursor-default"
+              className="service-card group relative flex flex-col overflow-hidden cursor-default"
               style={{
-                /* Gradient border trick: fill padding-box + gradient border-box */
-                background: featured
-                  ? `linear-gradient(145deg, rgba(254,190,0,0.11) 0%, rgba(254,190,0,0.03) 100%) padding-box,
-                     linear-gradient(135deg, rgba(254,190,0,0.80) 0%, rgba(254,190,0,0.22) 50%, rgba(254,190,0,0.60) 100%) border-box`
-                  : `linear-gradient(145deg, rgba(255,255,255,0.055) 0%, rgba(255,255,255,0.015) 100%) padding-box,
-                     linear-gradient(135deg, rgba(254,190,0,0.42) 0%, rgba(255,255,255,0.06) 50%, rgba(254,190,0,0.18) 100%) border-box`,
-                border: featured ? "1.5px solid transparent" : "1px solid transparent",
+                background: featured ? "#FEBE00" : "rgba(7,13,36,0.96)",
+                border: featured ? "3px solid #000B38" : "1px solid rgba(255,255,255,0.07)",
                 boxShadow: featured
-                  ? "0 20px 60px rgba(254,190,0,0.12), 0 4px 20px rgba(0,0,0,0.55)"
-                  : "0 8px 40px rgba(0,0,0,0.45)",
-                backdropFilter: "blur(12px)",
+                  ? "6px 6px 0 #000B38"
+                  : "0 8px 40px rgba(0,0,0,0.6)",
                 borderRadius: "10px",
                 transformStyle: "preserve-3d",
               }}
             >
-              {/* Hover radial glow */}
-              <div
-                className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
-                style={{
-                  background: "radial-gradient(circle at 35% 0%, rgba(254,190,0,0.09) 0%, transparent 65%)",
-                  borderRadius: "10px",
-                }}
-              />
+              {/* Inner padding container */}
+              <div className="flex flex-col flex-1 p-6 md:p-8">
 
-              {tag && (
-                <div
-                  className="absolute top-5 right-5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-[0.15em]"
+                {/* Top row: icon + tag */}
+                <div className="flex items-start justify-between mb-8">
+                  <div
+                    className="service-icon-wrap w-13 h-13 flex items-center justify-center"
+                    style={{
+                      width: "52px",
+                      height: "52px",
+                      background: featured ? "rgba(0,11,56,0.14)" : "rgba(254,190,0,0.08)",
+                      border: featured ? "1.5px solid rgba(0,11,56,0.28)" : "1.5px solid rgba(254,190,0,0.22)",
+                      borderRadius: "12px",
+                      flexShrink: 0,
+                    }}
+                  >
+                    <Icon size={22} color={featured ? "#000B38" : "#FEBE00"} />
+                  </div>
+
+                  {tag && (
+                    <div
+                      className="px-2.5 py-1 text-[11px] font-bold uppercase tracking-[0.18em] shrink-0"
+                      style={{
+                        background: featured ? "#000B38" : "rgba(254,190,0,0.1)",
+                        border: featured ? "none" : "1px solid rgba(254,190,0,0.3)",
+                        color: featured ? "#FEBE00" : "#FEBE00",
+                        fontFamily: "var(--font-inter)",
+                        borderRadius: "6px",
+                      }}
+                    >
+                      {tag}
+                    </div>
+                  )}
+                </div>
+
+                {/* Title */}
+                <h3
+                  className="mb-3 leading-tight"
                   style={{
-                    background: featured ? "rgba(254,190,0,0.18)" : "rgba(255,255,255,0.06)",
-                    border: featured ? "1px solid rgba(254,190,0,0.45)" : "1px solid rgba(255,255,255,0.12)",
-                    color: featured ? "#FEBE00" : "rgba(255,255,255,0.5)",
-                    fontFamily: "var(--font-inter)",
-                    borderRadius: "6px",
+                    fontFamily: "var(--font-cormorant)",
+                    fontSize: "clamp(1.55rem, 2.5vw, 2rem)",
+                    fontWeight: 800,
+                    color: featured ? "#000B38" : "#FFFFFF",
                   }}
                 >
-                  {tag}
-                </div>
-              )}
+                  {title}
+                </h3>
 
-              {/* Icon */}
-              <div
-                className="service-icon-wrap w-14 h-14 flex items-center justify-center mb-7 relative z-10 transition-transform duration-300 group-hover:scale-110"
-                style={{
-                  background: featured ? "rgba(254,190,0,0.16)" : "rgba(254,190,0,0.07)",
-                  border: featured ? "1px solid rgba(254,190,0,0.38)" : "1px solid rgba(254,190,0,0.2)",
-                  boxShadow: featured ? "0 0 32px rgba(254,190,0,0.25)" : "none",
-                  borderRadius: "12px",
-                }}
-              >
-                <Icon size={24} color="#FEBE00" />
-              </div>
-
-              <h3 className="text-white mb-3 relative z-10" style={{
-                fontFamily: "var(--font-cormorant)", fontSize: "1.55rem", fontWeight: 700,
-              }}>
-                {title}
-              </h3>
-              <p className="text-white/65 leading-relaxed relative z-10 flex-1" style={{
-                fontFamily: "var(--font-inter)", fontSize: "0.875rem", lineHeight: "1.75",
-              }}>
-                {description}
-              </p>
-
-              <div className="relative z-10 mt-6 pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-                <a
-                  href="https://wa.me/5519978210246"
-                  target="_blank" rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#FEBE00]/60 hover:text-[#FEBE00] transition-colors duration-300"
-                  style={{ fontFamily: "var(--font-inter)", fontSize: "0.75rem", letterSpacing: "0.1em", textTransform: "uppercase" }}
+                {/* Description */}
+                <p
+                  className="leading-relaxed flex-1"
+                  style={{
+                    fontFamily: "var(--font-inter)",
+                    fontSize: "0.875rem",
+                    lineHeight: "1.75",
+                    color: featured ? "rgba(0,11,56,0.72)" : "rgba(255,255,255,0.58)",
+                  }}
                 >
-                  Saiba mais
-                  <ArrowRight size={13} className="transition-transform duration-300 group-hover:translate-x-1.5" />
-                </a>
+                  {description}
+                </p>
+
+                {/* Footer link */}
+                <div
+                  className="mt-6 pt-5"
+                  style={{ borderTop: featured ? "1px solid rgba(0,11,56,0.14)" : "1px solid rgba(255,255,255,0.07)" }}
+                >
+                  <a
+                    href="https://wa.me/5519978210246"
+                    target="_blank" rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 transition-all duration-300 group/link"
+                    style={{
+                      fontFamily: "var(--font-inter)",
+                      fontSize: "0.75rem",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      fontWeight: 600,
+                      color: featured ? "rgba(0,11,56,0.65)" : "rgba(254,190,0,0.6)",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.color = featured ? "#000B38" : "#FEBE00";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.color = featured ? "rgba(0,11,56,0.65)" : "rgba(254,190,0,0.6)";
+                    }}
+                  >
+                    Saiba mais
+                    <ArrowRight size={13} className="transition-transform duration-300 group-hover/link:translate-x-1.5" />
+                  </a>
+                </div>
               </div>
+
+              {/* Featured: ambient glow bottom-right */}
+              {featured && (
+                <div
+                  className="absolute bottom-0 right-0 w-48 h-48 pointer-events-none opacity-[0.08]"
+                  style={{ background: "radial-gradient(circle at 100% 100%, #000B38 0%, transparent 70%)" }}
+                />
+              )}
+              {/* Dark cards: hover top shimmer */}
+              {!featured && (
+                <div
+                  className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(254,190,0,0.5), transparent)" }}
+                />
+              )}
             </div>
           ))}
         </div>
