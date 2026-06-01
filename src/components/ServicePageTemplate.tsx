@@ -80,7 +80,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
             const ServiceIconComp = ICONS[service.icon] ?? Shield;
             return (
               <div
-                className="relative pt-36 pb-24 px-8 md:px-20 lg:px-32 overflow-hidden"
+                className="relative pt-28 md:pt-36 pb-16 md:pb-24 px-6 md:px-20 lg:px-32 overflow-hidden"
                 style={{ background: "linear-gradient(145deg, #000214 0%, #000B38 55%, #040E30 100%)" }}
               >
                 {/* Ambient glows */}
@@ -153,17 +153,19 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           })()}
 
           {/* ══ 1. HIGHLIGHTS — fundo amarelo com dividers ══════════════ */}
-          <div className="hl-band py-12 px-8 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
+          <div className="hl-band py-10 px-6 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3">
                 {service.highlights.map(({ label, value }, i) => (
-                  <div key={label} className="hl-stat flex flex-col items-center text-center py-3 px-4 relative">
-                    {/* Divider vertical */}
-                    {i > 0 && <div className="absolute left-0 top-3 bottom-3 w-px" style={{ background: "rgba(0,11,56,0.2)" }} />}
+                  <div key={label} className="hl-stat flex flex-col items-center text-center py-5 sm:py-3 px-4 relative">
+                    {/* Divisor horizontal no mobile */}
+                    {i > 0 && <div className="sm:hidden absolute top-0 left-8 right-8 h-px" style={{ background: "rgba(0,11,56,0.15)" }} />}
+                    {/* Divisor vertical no sm+ */}
+                    {i > 0 && <div className="hidden sm:block absolute left-0 top-3 bottom-3 w-px" style={{ background: "rgba(0,11,56,0.2)" }} />}
                     <span
                       style={{
                         fontFamily: "var(--font-cormorant)",
-                        fontSize: "clamp(1.8rem, 3.5vw, 3rem)",
+                        fontSize: "clamp(1.5rem, 3vw, 2.8rem)",
                         fontWeight: 800,
                         color: NAVY,
                         lineHeight: 1,
@@ -171,7 +173,6 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
                     >
                       {value}
                     </span>
-                    {/* Mini separator */}
                     <div className="w-6 h-px my-2" style={{ background: "rgba(0,11,56,0.3)" }} />
                     <span
                       className="uppercase"
@@ -186,7 +187,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </div>
 
           {/* ══ 2. DESCRIÇÃO + FOTO — fundo branco ═════════════════════ */}
-          <section className="intro-section py-24 px-8 md:px-20 lg:px-32" style={{ background: WHITE }}>
+          <section className="intro-section py-16 md:py-24 px-6 md:px-20 lg:px-32" style={{ background: WHITE }}>
             <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
 
               {/* Text — sem repetição de título */}
@@ -265,7 +266,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 3. BENEFÍCIOS — fundo navy escuro ══════════════════════ */}
-          <section className="py-24 px-8 md:px-20 lg:px-32 relative overflow-hidden" style={{ background: NAVY_BG }}>
+          <section className="py-14 md:py-20 lg:py-24 px-6 md:px-20 lg:px-32 relative overflow-hidden" style={{ background: NAVY_BG }}>
             {/* ── SEÇÃO TEXTURA ── grid na seção de benefícios */}
             <div className="section-grid" aria-hidden="true" />
             <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 60% 0%, rgba(254,190,0,0.07) 0%, transparent 55%)" }} />
@@ -322,7 +323,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 4. PROCESSO — fundo amarelo ════════════════════════════ */}
-          <section className="proc-section py-24 px-8 md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
+          <section className="proc-section py-14 md:py-20 lg:py-24 px-6 md md:px-20 lg:px-32" data-texture="diagonal" style={{ background: YELLOW }}>
             <div className="max-w-7xl mx-auto">
               <div className="mb-14">
                 <span
@@ -371,7 +372,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 5. CTA — fundo navy ════════════════════════════════════ */}
-          <section className="cta-band py-20 px-8 md:px-20 lg:px-32" style={{ background: NAVY_BG2 }}>
+          <section className="cta-band py-12 md:py-16 lg:py-20 px-6 md md:px-20 lg:px-32" style={{ background: NAVY_BG2 }}>
             <div className="cta-inner max-w-7xl mx-auto flex flex-col lg:flex-row items-center justify-between gap-10">
               <div className="max-w-xl">
                 <span className="block mb-3 uppercase tracking-[0.28em] text-xs" style={{ fontFamily: "var(--font-inter)", color: YELLOW }}>Pronto para começar?</span>
@@ -406,7 +407,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
           </section>
 
           {/* ══ 6. FAQ — fundo branco ══════════════════════════════════ */}
-          <section className="faq-section py-24 px-8 md:px-20 lg:px-32" style={{ background: WHITE }}>
+          <section className="faq-section py-14 md:py-20 lg:py-24 px-6 md md:px-20 lg:px-32" style={{ background: WHITE }}>
             <div className="max-w-3xl mx-auto">
               <div className="mb-12">
                 <span
@@ -490,7 +491,7 @@ export default function ServicePageTemplate({ service }: { service: ServiceData 
 
           {/* ══ 7. SERVIÇOS RELACIONADOS — navy ════════════════════════ */}
           {related.length > 0 && (
-            <section className="rel-section py-20 px-8 md:px-20 lg:px-32" style={{ background: NAVY_BG3 }}>
+            <section className="rel-section py-12 md:py-16 lg:py-20 px-6 md md:px-20 lg:px-32" style={{ background: NAVY_BG3 }}>
               <div className="max-w-7xl mx-auto">
                 <div className="flex items-end justify-between mb-10 gap-6">
                   <div>

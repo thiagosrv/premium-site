@@ -101,7 +101,7 @@ export default function Services() {
     <section
       id="servicos"
       ref={sectionRef}
-      className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 px-6 md:px-20 lg:px-32 relative overflow-hidden"
       style={{ background: "linear-gradient(135deg, #010412 0%, #040926 45%, #0A1540 100%)" }}
     >
       {/* ── SEÇÃO TEXTURA ── grid quadriculado animado */}
@@ -110,7 +110,7 @@ export default function Services() {
       <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 85% 15%, rgba(20,40,120,0.35) 0%, transparent 45%)" }} />
 
       <div className="max-w-7xl mx-auto relative z-10">
-        <div className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
+        <div className="mb-10 md:mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-5 md:gap-6">
           <div className="max-w-2xl">
             <span
               className="services-eyebrow block mb-4 text-[#FEBE00] tracking-[0.32em] uppercase text-xs"
@@ -143,7 +143,7 @@ export default function Services() {
           {services.map(({ icon: Icon, title, description, tag, featured }) => (
             <div
               key={title}
-              className="service-card group relative flex flex-col p-8 overflow-hidden transition-all duration-500 hover:-translate-y-2 cursor-default"
+              className="service-card group relative flex flex-col p-5 md:p-8 overflow-hidden transition-all duration-500 hover:-translate-y-2 cursor-default"
               style={{
                 background: featured
                   ? "linear-gradient(145deg, rgba(254,190,0,0.09) 0%, rgba(254,190,0,0.03) 100%)"

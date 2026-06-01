@@ -10,25 +10,25 @@ gsap.registerPlugin(ScrollTrigger);
 const reviews = [
   {
     name: "Paulo Henrique",
-    role: "Cliente — Google Reviews",
+    role: "Cliente · Google Reviews",
     text: "Empresa referência na região. Portaria e segurança de altíssimo nível. Equipe treinada, comprometida e muito profissional.",
     stars: 5,
   },
   {
     name: "Fernanda Carvalho",
-    role: "Cliente — Google Reviews",
+    role: "Cliente · Google Reviews",
     text: "Contratamos limpeza e zeladoria há mais de 3 anos. Resultado sempre impecável. Profissionalismo da equipe e atendimento comercial excelente.",
     stars: 5,
   },
   {
     name: "Ricardo Andrade",
-    role: "Cliente — Google Reviews",
+    role: "Cliente · Google Reviews",
     text: "27 anos de mercado com toda razão. Seriedade, pontualidade e qualidade que já não se encontra em muitas empresas.",
     stars: 5,
   },
   {
     name: "Google Reviews",
-    role: "4.8 de 5 — 59 avaliações",
+    role: "4.8 de 5 · 59 avaliações",
     text: "A PS Proteção mantém nota 4.8 no Google com dezenas de avaliações verificadas de clientes reais de toda a região de Campinas.",
     stars: 5,
   },
@@ -36,7 +36,7 @@ const reviews = [
 
 export default function Reviews() {
   const sectionRef = useRef<HTMLElement>(null);
-  const cardsRef = useRef<HTMLDivElement>(null);
+  const cardsRef   = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -63,12 +63,11 @@ export default function Reviews() {
       if (cardsRef.current) {
         const cards = cardsRef.current.querySelectorAll(".review-card");
         gsap.from(cards, {
-          y: 60, opacity: 0, rotate: 1.5, scale: 0.95,
+          y: 60, opacity: 0, scale: 0.97,
           duration: 0.85, stagger: 0.12, ease: "power3.out",
           immediateRender: false,
           scrollTrigger: { trigger: cardsRef.current, start: "top 88%", once: true },
         });
-
         const quotes = cardsRef.current.querySelectorAll(".review-quote");
         gsap.from(quotes, {
           scale: 0, opacity: 0, duration: 0.5, stagger: 0.12,
@@ -85,35 +84,53 @@ export default function Reviews() {
     <section
       id="avaliacoes"
       ref={sectionRef}
-      className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
-      style={{ background: "linear-gradient(125deg, #020618 0%, #040926 40%, #000B38 100%)" }}
+      className="py-16 md:py-24 lg:py-32 px-6 md:px-20 lg:px-32 relative overflow-hidden"
+      style={{
+        background: "#F9F8F5",
+        borderTop: "3px solid #FEBE00",
+        borderBottom: "3px solid #000B38",
+      }}
     >
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 70% 0%, rgba(254,190,0,0.05) 0%, transparent 50%)" }} />
-      <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at 5% 100%, rgba(20,40,130,0.35) 0%, transparent 45%)" }} />
+      {/* Decorative background mark */}
+      <div className="absolute bottom-0 right-0 w-80 h-80 pointer-events-none opacity-[0.03]"
+        style={{ background: "radial-gradient(circle, #000B38 0%, transparent 70%)" }} />
+
       <div className="max-w-7xl mx-auto relative z-10">
+
+        {/* Header */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div>
-            <span
-              className="reviews-eyebrow block mb-4 text-[#FEBE00] tracking-[0.32em] uppercase text-xs"
-              style={{ fontFamily: "var(--font-inter)" }}
-            >
-              Avaliações
-            </span>
+            <div className="reviews-eyebrow flex items-center gap-3 mb-4">
+              <div className="w-8 h-0.5 shrink-0" style={{ background: "#FEBE00" }} />
+              <span
+                className="tracking-[0.3em] uppercase text-xs font-medium"
+                style={{ fontFamily: "var(--font-inter)", color: "#000B38" }}
+              >
+                Avaliações
+              </span>
+            </div>
             <h2
-              className="reviews-h2 text-white leading-tight"
+              className="reviews-h2 leading-tight"
               style={{
                 fontFamily: "var(--font-cormorant)",
                 fontSize: "clamp(1.9rem, 3.6vw, 3.2rem)",
                 fontWeight: 700,
+                color: "#000B38",
               }}
             >
               O que nossos clientes dizem
             </h2>
           </div>
 
+          {/* Google badge */}
           <div
-            className="reviews-badge flex items-center gap-3 px-5 py-4 border border-white/8 shrink-0"
-            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(8px)", borderRadius: "5px" }}
+            className="reviews-badge flex items-center gap-3 px-4 py-3 self-start md:self-auto shrink-0"
+            style={{
+              background: "#FFFFFF",
+              border: "1.5px solid rgba(0,11,56,0.12)",
+              boxShadow: "0 2px 12px rgba(0,11,56,0.06)",
+              borderRadius: "5px",
+            }}
           >
             <svg viewBox="0 0 24 24" className="w-5 h-5 shrink-0" fill="none">
               <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
@@ -125,7 +142,7 @@ export default function Reviews() {
               <div className="flex gap-0.5 mb-0.5">
                 {[...Array(5)].map((_, i) => <Star key={i} size={11} color="#FEBE00" fill="#FEBE00" />)}
               </div>
-              <p className="text-white/40 text-[11px] uppercase tracking-widest" style={{ fontFamily: "var(--font-inter)" }}>
+              <p className="text-[11px] uppercase tracking-widest" style={{ fontFamily: "var(--font-inter)", color: "rgba(0,11,56,0.5)" }}>
                 4.8 · Google Reviews
               </p>
             </div>
@@ -136,40 +153,66 @@ export default function Reviews() {
         <a
           href={NAP.gmb}
           target="_blank" rel="noopener noreferrer"
-          className="gmb-cta group flex items-center gap-3 mb-12 px-5 py-3.5 border border-[#FEBE00]/20 hover:border-[#FEBE00]/50 transition-all duration-300 hover:-translate-y-0.5 w-full md:w-auto inline-flex"
-          style={{ background: "rgba(254,190,0,0.05)", backdropFilter: "blur(8px)", borderRadius: "5px" }}
+          className="gmb-cta group flex items-center gap-3 mb-10 px-5 py-3.5 transition-all duration-300 hover:-translate-y-0.5 w-full md:w-auto"
+          style={{
+            background: "#FFFFFF",
+            border: "1.5px solid rgba(0,11,56,0.15)",
+            boxShadow: "0 2px 10px rgba(0,11,56,0.06)",
+            borderRadius: "5px",
+          }}
         >
           <div className="flex gap-0.5">
             {[...Array(5)].map((_, i) => <Star key={i} size={12} color="#FEBE00" fill="#FEBE00" />)}
           </div>
-          <span className="text-white/70 group-hover:text-white transition-colors text-xs uppercase tracking-widest" style={{ fontFamily: "var(--font-inter)" }}>
+          <span
+            className="text-xs uppercase tracking-widest transition-colors"
+            style={{ fontFamily: "var(--font-inter)", color: "rgba(0,11,56,0.65)" }}
+          >
             Avalie a PS Proteção no Google
           </span>
-          <ExternalLink size={13} color="rgba(254,190,0,0.6)" className="ml-auto transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+          <ExternalLink size={13} color="rgba(0,11,56,0.35)" className="ml-auto transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
         </a>
 
-        {/* Cards */}
-        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Review Cards */}
+        <div ref={cardsRef} className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
           {reviews.map(({ name, role, text, stars }) => (
             <div
               key={name}
-              className="review-card group flex flex-col p-7 border border-white/7 transition-all duration-500 hover:-translate-y-1 hover:border-[#FEBE00]/20"
-              style={{ background: "rgba(255,255,255,0.025)", backdropFilter: "blur(8px)", borderRadius: "5px" }}
+              className="review-card group flex flex-col p-5 md:p-6 transition-all duration-400 hover:-translate-y-1"
+              style={{
+                background: "#FFFFFF",
+                border: "1.5px solid rgba(0,11,56,0.1)",
+                boxShadow: "0 2px 16px rgba(0,11,56,0.06)",
+                borderRadius: "5px",
+              }}
             >
-              <div className="review-quote mb-4">
-                <Quote size={22} color="#FEBE00" style={{ opacity: 0.4 }} />
+              {/* Hover gold top line */}
+              <div className="absolute top-0 left-0 right-0 h-0.5 rounded-t opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                style={{ background: "#FEBE00" }} />
+
+              <div className="review-quote mb-3">
+                <Quote size={28} color="#FEBE00" style={{ opacity: 0.6 }} />
               </div>
-              <div className="flex gap-1 mb-4">
+              <div className="flex gap-0.5 mb-3">
                 {[...Array(stars)].map((_, i) => <Star key={i} size={13} color="#FEBE00" fill="#FEBE00" />)}
               </div>
-              <p className="text-white/70 leading-relaxed flex-1 mb-6" style={{ fontFamily: "var(--font-inter)", fontSize: "0.875rem" }}>
+              <p
+                className="leading-relaxed flex-1 mb-5 text-sm"
+                style={{ fontFamily: "var(--font-inter)", color: "rgba(0,11,56,0.7)" }}
+              >
                 &ldquo;{text}&rdquo;
               </p>
-              <div className="pt-5" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
-                <p className="text-white" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.05rem", fontWeight: 600 }}>
+              <div className="pt-4" style={{ borderTop: "1px solid rgba(0,11,56,0.08)" }}>
+                <p
+                  className="font-semibold"
+                  style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.05rem", color: "#000B38" }}
+                >
                   {name}
                 </p>
-                <p className="text-[#FEBE00]/60 text-[11px] uppercase tracking-[0.15em] mt-0.5" style={{ fontFamily: "var(--font-inter)" }}>
+                <p
+                  className="text-[11px] uppercase tracking-[0.12em] mt-0.5"
+                  style={{ fontFamily: "var(--font-inter)", color: "#FEBE00" }}
+                >
                   {role}
                 </p>
               </div>

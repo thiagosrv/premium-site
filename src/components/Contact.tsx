@@ -78,7 +78,7 @@ export default function Contact() {
     <section
       id="contato"
       ref={sectionRef}
-      className="py-32 px-8 md:px-20 lg:px-32 relative overflow-hidden"
+      className="py-16 md:py-24 lg:py-32 px-6 md:px-20 lg:px-32 relative overflow-hidden"
       style={{ background: "linear-gradient(145deg, #07102A 0%, #030A20 55%, #000412 100%)" }}
     >
       {/* ── SEÇÃO TEXTURA ── grid quadriculado animado */}
@@ -163,7 +163,7 @@ export default function Contact() {
           <div className="contact-form">
             <form
               onSubmit={handleSubmit(onSubmit)}
-              className="flex flex-col gap-5 p-8 border border-white/7"
+              className="flex flex-col gap-5 p-5 md:p-8 border border-white/7"
               style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(16px)", borderRadius: "5px" }}
             >
               <h3 className="text-white mb-1" style={{ fontFamily: "var(--font-cormorant)", fontSize: "1.7rem", fontWeight: 700 }}>
@@ -238,7 +238,7 @@ export default function Contact() {
         <iframe
           src={`https://maps.google.com/maps?q=${encodeURIComponent("Rua São Gabriel, 1623, Vila Belvedere, Americana, SP, Brasil")}&output=embed&hl=pt-BR&z=16`}
           width="100%"
-          height="320"
+          height="260"
           style={{ border: 0, display: "block", filter: "invert(90%) hue-rotate(180deg) saturate(0.7) brightness(0.85)" }}
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"

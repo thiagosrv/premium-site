@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
@@ -144,8 +144,9 @@ export default function Navbar() {
       {/* ── Menu mobile ─────────────────────────────────────────────── */}
       {menuOpen && (
         <div
-          className="md:hidden px-8 py-8 flex flex-col gap-6"
+          className="md:hidden px-6 py-6 flex flex-col gap-5 overflow-y-auto"
           style={{
+            maxHeight: "calc(100vh - 80px)",
             background: "rgba(0,2,20,0.97)",
             backdropFilter: "blur(24px)",
             borderTop: "1px solid rgba(254,190,0,0.12)",

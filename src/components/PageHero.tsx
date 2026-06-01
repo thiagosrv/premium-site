@@ -29,7 +29,7 @@ export default function PageHero({ eyebrow, title, description, breadcrumbs }: P
   return (
     <div
       ref={ref}
-      className="relative pt-36 pb-20 px-8 md:px-20 lg:px-32 overflow-hidden"
+      className="relative pt-28 md:pt-36 pb-12 md:pb-20 px-6 md:px-20 lg:px-32 overflow-hidden"
       style={{ background: "linear-gradient(145deg, #000214 0%, #000B38 55%, #040E30 100%)" }}
     >
       {/* Glows */}

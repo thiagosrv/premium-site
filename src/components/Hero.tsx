@@ -147,13 +147,13 @@ export default function Hero() {
       }} />
 
       {/* Content */}
-      <div className="absolute inset-0 flex flex-col justify-end pb-20 px-8 md:px-20 lg:px-32 z-10">
+      <div className="absolute inset-0 flex flex-col justify-end pb-14 md:pb-20 px-6 md:px-20 lg:px-32 z-10">
         <div className="max-w-5xl">
           {/* Eyebrow */}
           <div ref={eyebrowRef} className="flex items-center gap-3 mb-6">
             <div ref={lineRef} className="h-px w-10" style={{ background: "#FEBE00" }} />
             <span
-              className="text-[#FEBE00] tracking-[0.35em] uppercase text-xs font-medium"
+              className="text-[#FEBE00] tracking-[0.15em] md:tracking-[0.35em] uppercase text-xs font-medium"
               style={{ fontFamily: "var(--font-inter)" }}
             >
               27 Anos de Experiência · Americana-SP
